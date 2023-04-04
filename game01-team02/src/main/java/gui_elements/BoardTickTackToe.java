@@ -62,11 +62,11 @@ public class BoardTickTackToe extends JPanel {
 		this.toggle_buttons[i][j].setSelected(false);
 	}
 	
-	public JToggleButton[][] getArrayOfButtons() {
+	public ToggleButtonWithId[][] getArrayOfButtons() {
 		return this.toggle_buttons;
 	}
 	
-	public JToggleButton getCurrentButton(int x, int y) {
+	public ToggleButtonWithId getCurrentButton(int x, int y) {
 		return this.toggle_buttons[x][y];
 	}
 }
