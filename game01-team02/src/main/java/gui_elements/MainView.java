@@ -8,6 +8,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.BoardController;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -20,6 +23,7 @@ public class MainView extends JFrame {
 
 	private JPanel contentPane;
 
+	private BoardController board_controller;
 
 	public static void main(String[] args) {
 		
@@ -51,6 +55,8 @@ public class MainView extends JFrame {
 		this.add(right);
 		this.setVisible(true);
 		
+		// Inicialización de la lógica
+		this.board_controller = new BoardController(left); // controlling ticktacktoe
 	}
 
 }
