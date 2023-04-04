@@ -1,5 +1,8 @@
 package gui_elements;
-
+/**
+ * GAME01-TEAM02( Marc Rojo, Francisco, Elena)
+ *
+ */
 import javax.swing.plaf.basic.BasicButtonUI;
 import javax.swing.AbstractButton;
 import javax.swing.JComponent;

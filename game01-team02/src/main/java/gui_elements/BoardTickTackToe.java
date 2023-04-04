@@ -1,5 +1,8 @@
 package gui_elements;
-
+/**
+ * GAME01-TEAM02( Marc Rojo, Francisco, Elena)
+ *
+ */
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
 
