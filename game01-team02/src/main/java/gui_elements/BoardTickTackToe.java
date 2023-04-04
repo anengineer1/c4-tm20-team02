@@ -29,7 +29,8 @@ public class BoardTickTackToe extends JPanel {
 			for (int j = 0; j < toggle_buttons[i].length; j++) {
 				this.toggle_buttons[i][j] = new JToggleButton();
 				this.toggle_buttons[i][j].setContentAreaFilled(false);
-				this.toggle_buttons[i][j].setOpaque(true);
+				// this.toggle_buttons[i][j].setOpaque(true);
+				this.toggle_buttons[i][j].setUI(new ToggleButtonStyle());
 				this.toggle_buttons[i][j].setVisible(true);
 				this.add(this.toggle_buttons[i][j]);
 			}
