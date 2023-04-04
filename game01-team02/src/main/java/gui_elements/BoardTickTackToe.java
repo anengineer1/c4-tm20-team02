@@ -13,7 +13,7 @@ public class BoardTickTackToe extends JPanel {
 	private final static int ROWS = 3;
 	private final static int COLS = 3;
 
-	private JToggleButton[][] toggle_buttons;
+	private ToggleButtonWithId[][] toggle_buttons;
 
 	private ToggleButtonStyle[][] ui_toggle_button_style;
 
@@ -29,14 +29,14 @@ public class BoardTickTackToe extends JPanel {
 
 	private void initialize() {
 		// Atributes
-		this.toggle_buttons = new JToggleButton[BoardTickTackToe.ROWS][BoardTickTackToe.COLS];
+		this.toggle_buttons = new ToggleButtonWithId[BoardTickTackToe.ROWS][BoardTickTackToe.COLS];
 		this.ui_toggle_button_style = new ToggleButtonStyle[BoardTickTackToe.ROWS][BoardTickTackToe.COLS];
 
 		for (int i = 0; i < toggle_buttons.length; i++) {
 			for (int j = 0; j < toggle_buttons[i].length; j++) {
 				// init togglebuttonsStyles
 				this.ui_toggle_button_style[i][j] = new ToggleButtonStyle();
-				this.toggle_buttons[i][j] = new JToggleButton();
+				this.toggle_buttons[i][j] = new ToggleButtonWithId(i,j);
 				this.toggle_buttons[i][j].setContentAreaFilled(false);
 				// this.toggle_buttons[i][j].setOpaque(true);
 				this.toggle_buttons[i][j].setUI(this.ui_toggle_button_style[i][j]);
@@ -60,5 +60,13 @@ public class BoardTickTackToe extends JPanel {
 	
 	public void setCellUnSelected(int i, int j) {
 		this.toggle_buttons[i][j].setSelected(false);
+	}
+	
+	public JToggleButton[][] getArrayOfButtons() {
+		return this.toggle_buttons;
+	}
+	
+	public JToggleButton getCurrentButton(int x, int y) {
+		return this.toggle_buttons[x][y];
 	}
 }
