@@ -1,7 +1,11 @@
+
+/**
+ * GAME01-TEAM02( Marc Rojo, Francisco, Elena)
+ *
+ */
 package gui_elements;
 
 import java.awt.EventQueue;
-
 import javax.swing.JButton;
 import javax.swing.JSeparator;
 import javax.swing.JLabel;

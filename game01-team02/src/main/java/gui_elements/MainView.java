@@ -12,7 +12,6 @@ import java.awt.Window.Type;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.JSplitPane;
-import net.miginfocom.swing.MigLayout;
 
 public class MainView extends JFrame {
 
@@ -30,7 +29,7 @@ public class MainView extends JFrame {
 		setTitle("TEAM02 - Tick Tack Toe ");
 		setFont(new Font("Montserrat Medium", Font.PLAIN, 12));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 950, 950);
+		setBounds(100, 100, 975, 650);
 		
 		//--JPane Principal
 		this.setBackground(new Color(0, 128, 192));
