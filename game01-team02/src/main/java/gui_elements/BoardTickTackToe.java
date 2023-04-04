@@ -30,16 +30,16 @@ public class BoardTickTackToe extends JPanel {
 	private void initialize() {
 		// Atributes
 		this.toggle_buttons = new ToggleButtonWithId[BoardTickTackToe.ROWS][BoardTickTackToe.COLS];
-		this.ui_toggle_button_style = new ToggleButtonStyle[BoardTickTackToe.ROWS][BoardTickTackToe.COLS];
+		// this.ui_toggle_button_style = new ToggleButtonStyle[BoardTickTackToe.ROWS][BoardTickTackToe.COLS];
 
 		for (int i = 0; i < toggle_buttons.length; i++) {
 			for (int j = 0; j < toggle_buttons[i].length; j++) {
 				// init togglebuttonsStyles
-				this.ui_toggle_button_style[i][j] = new ToggleButtonStyle();
+				// this.ui_toggle_button_style[i][j] = new ToggleButtonStyle();
 				this.toggle_buttons[i][j] = new ToggleButtonWithId(i,j);
 				this.toggle_buttons[i][j].setContentAreaFilled(false);
 				// this.toggle_buttons[i][j].setOpaque(true);
-				this.toggle_buttons[i][j].setUI(this.ui_toggle_button_style[i][j]);
+				// this.toggle_buttons[i][j].setUI(this.ui_toggle_button_style[i][j]);
 				this.add(this.toggle_buttons[i][j]);
 			}
 		}

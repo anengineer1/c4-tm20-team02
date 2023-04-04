@@ -13,11 +13,17 @@ import java.awt.Graphics;
 
 public class ToggleButtonStyle extends BasicButtonUI {
 
+	private boolean drawX;
+	
 	public ToggleButtonStyle() {
 		super();
+		this.drawX = true;
 	}
-
-	private boolean drawX = true;
+	
+	public ToggleButtonStyle(boolean is_x) {
+		super();
+		this.drawX = is_x;
+	}
 
 	@Override
 	public void paint(Graphics g, JComponent c) {
