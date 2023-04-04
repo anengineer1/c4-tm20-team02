@@ -5,14 +5,17 @@
  */
 package gui_elements;
 
-import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
-import javax.swing.JSeparator;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
 import javax.swing.JRadioButton;
+
+import controller.PanelController;
+
+import javax.swing.JTextField;
 
 public class PanelControl extends JPanel{
 
@@ -29,6 +32,7 @@ public class PanelControl extends JPanel{
 	private void initialize() {
 		this.setBounds(100, 100, 488, 393);
 		this.setLayout(null);
+		PanelController pc = new PanelController();
 		
 		JButton btnNewButton = new JButton("Nueva Partida");
 		btnNewButton.setBounds(169, 11, 120, 28);
@@ -83,5 +87,11 @@ public class PanelControl extends JPanel{
 		JRadioButton boton2CPU = new JRadioButton("CPU");
 		boton2CPU.setBounds(172, 274, 53, 23);
 		this.add(boton2CPU);
-	}
-}
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pc.clickPartida(NombreJugador1, NombreJugador1);
+			}
+		});
+	}}
+
