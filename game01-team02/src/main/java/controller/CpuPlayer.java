@@ -1,6 +1,7 @@
 package controller;
 
 import java.awt.Point;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -9,22 +10,28 @@ import gui_elements.ToggleButtonWithId;
 
 public class CpuPlayer {
 
+
 	private BoardController board_controller;
 	private ArrayList<ToggleButtonWithId> array_of_available_buttons;
 	private ArrayList<Point> selected_points;
+
 	private boolean is_cpu_turn;
 	private boolean is_second_player;
 	private boolean is_first_player;
 
 	public CpuPlayer(BoardController controller, boolean is_first_player, boolean is_second_player) {
+
 		this.board_controller = controller;
 		this.selected_points = new ArrayList<Point>();
+
 		// cpu has first turn if it's the first player
 		this.is_cpu_turn = is_first_player;
 		this.is_first_player = is_first_player;
 		this.is_second_player = is_second_player;
 		this.initArrayOfAvailableButtons();
+
 		this.board_controller.setCpuPlayer(this);
+
 		if (is_first_player) {
 			this.doAMove();
 		}
@@ -96,3 +103,4 @@ public class CpuPlayer {
 		System.out.println(this.checkWin());
 	}
 }
+
