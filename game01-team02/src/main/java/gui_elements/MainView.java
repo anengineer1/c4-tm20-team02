@@ -8,6 +8,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.BoardController;
+import controller.CpuPlayer;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -20,6 +24,9 @@ public class MainView extends JFrame {
 
 	private JPanel contentPane;
 
+	private BoardController board_controller;
+	
+	private CpuPlayer cpu_player;
 
 	public static void main(String[] args) {
 		
@@ -51,6 +58,10 @@ public class MainView extends JFrame {
 		this.add(right);
 		this.setVisible(true);
 		
+		// Inicialización de la lógica
+		this.board_controller = new BoardController(left); // controlling ticktacktoe
+		this.cpu_player = new CpuPlayer(this.board_controller, false, true);
+		// Probando cpu
 	}
 
 }
