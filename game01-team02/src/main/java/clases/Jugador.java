@@ -11,7 +11,7 @@ public class Jugador {
 
 	// ------------------- Atributos ---------------------
 	String Nombre;
-	String tipo;
+	Boolean isHumano;
 	int numJugadas;
 	int puntuacion;
 
@@ -25,7 +25,7 @@ public class Jugador {
 	/*-- Constructor por defecto --*/
 	public Jugador(String nombre, String tipo) {
 		this.Nombre = nombre;
-		this.tipo = tipo;
+		this.isHumano = true;
 		this.numJugadas = 0;
 		this.puntuacion = 0;
 	}
@@ -49,15 +49,15 @@ public class Jugador {
 	/**
 	 * @return the tipo
 	 */
-	public String getTipo() {
-		return tipo;
+	public Boolean getTipo() {
+		return isHumano;
 	}
 
 	/**
 	 * @param tipo the tipo to set
 	 */
 	public void setTipo(String tipo) {
-		this.tipo = tipo;
+		this.isHumano = isHumano;
 	}
 
 	/**
@@ -94,6 +94,10 @@ public class Jugador {
 		}else {
 			 numJugada = numJugada + 1;
 		}
+		
+	}
+	
+	public void checkIfFinal() {
 		
 	}
 	

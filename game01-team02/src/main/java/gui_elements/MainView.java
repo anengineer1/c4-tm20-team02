@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 
 import controller.BoardController;
 import controller.CpuPlayer;
+import controller.PanelController;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -26,11 +27,12 @@ public class MainView extends JFrame {
 
 	private BoardController board_controller;
 	
+	private BoardTickTackToe left;
+	
+	private PanelController panel_controller;
+	private PanelControl right;
+	
 	private CpuPlayer cpu_player;
-
-	public static void main(String[] args) {
-		
-	}
 
 	/**
 	 * Create the frame.
@@ -50,18 +52,33 @@ public class MainView extends JFrame {
 		
 		//Creacion de Paneles 
 		//Panel Izquierda: Tablero
-		BoardTickTackToe left = new BoardTickTackToe();
+		this.left = new BoardTickTackToe();
 		//Panel Derecha
-		PanelControl right = new PanelControl();	
+		this.right = new PanelControl(panel_controller);	
 		
 		this.add(left);
 		this.add(right);
 		this.setVisible(true);
 		
+		
+		//BOARDCONTROLLER
 		// Inicialización de la lógica
 		this.board_controller = new BoardController(left); // controlling ticktacktoe
 		this.cpu_player = new CpuPlayer(this.board_controller, false, true);
 		// Probando cpu
+		
+		//PANELCONTROLLER
+		this.panel_controller = new PanelController(left, right);
+		
+	}
+	
+	public BoardTickTackToe getBoard() {
+		return this.left;
 	}
 
+	public PanelControl getPanelControl() {
+		return this.right;
+	}
+	
+	
 }
