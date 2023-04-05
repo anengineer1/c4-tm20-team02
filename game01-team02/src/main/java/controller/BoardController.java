@@ -21,9 +21,6 @@ public class BoardController {
 	// CPU to send signals back in case the CPU is one of the players
 	private CpuPlayer cpu_player;
 
-	// Atributes meant to be deleted
-	private int hover_x;
-	private int hover_y;
 	// X or O?
 	private boolean is_x;
 
@@ -38,9 +35,13 @@ public class BoardController {
 	private BoardTickTackToe ticktacktoe;
 
 	public BoardController(BoardTickTackToe board_tick_tack_toe) {
+		/**
+		 * A board is needed for the controller to work
+		 *
+		 */
+
+		// Initially, we don't have communication with any cpu
 		this.cpu_player = null;
-		this.hover_x = 0;
-		this.hover_y = 0;
 		this.is_x = true;
 		this.ticktacktoe = board_tick_tack_toe;
 		this.initOnHover();
@@ -49,6 +50,9 @@ public class BoardController {
 	}
 
 	private void initToggleButtonsActions() {
+		/**
+		 * Initializes every button with the listeners
+		 */
 		for (int i = 0; i < this.ticktacktoe.getArrayOfButtons().length; i++) {
 			for (int j = 0; j < this.ticktacktoe.getArrayOfButtons()[i].length; j++) {
 				this.ticktacktoe.getArrayOfButtons()[i][j].addMouseListener(on_hover_event);
@@ -59,6 +63,9 @@ public class BoardController {
 	}
 
 	private void initTogglePressed() {
+		/**
+		 * Initializes the action when an user presses the button on the grid
+		 */
 		this.on_click_toggle = new ActionListener() {
 
 			@Override
@@ -113,7 +120,10 @@ public class BoardController {
 	}
 
 	public void clearButtons() {
-		// this method is meant to be used when the games needs to be restarted
+		/**
+		 * This method is meant to be used when the games needs to be restarted
+		 */
+
 		for (int i = 0; i < this.ticktacktoe.getArrayOfButtons().length; i++) {
 			for (int j = 0; j < this.ticktacktoe.getArrayOfButtons()[i].length; j++) {
 				this.ticktacktoe.getArrayOfButtons()[i][j].setEnabled(true);
@@ -123,6 +133,10 @@ public class BoardController {
 	}
 
 	public ArrayList<ToggleButtonWithId> getArrayOfAvailableButtons() {
+		/**
+		 * Returns an array of buttons yet to be pushed
+		 */
+
 		ArrayList<ToggleButtonWithId> array_of_available_buttons = new ArrayList<ToggleButtonWithId>();
 
 		for (int i = 0; i < this.ticktacktoe.getArrayOfButtons().length; i++) {
@@ -137,14 +151,23 @@ public class BoardController {
 	}
 
 	public void setCpuPlayer(CpuPlayer mycpuplayer) {
+		/**
+		 * When a cpu player is parsed, it will be able to reply to user input
+		 */
 		this.cpu_player = mycpuplayer;
 	}
 
 	public boolean getX() {
+		/**
+		 * True if the turn corresponds to an 'X'
+		 */
 		return this.is_x;
 	}
 
 	public void toggleIsX() {
+		/**
+		 * Toggle the use of 'X' and 'O'
+		 */
 		this.is_x = !this.is_x;
 	}
 }
