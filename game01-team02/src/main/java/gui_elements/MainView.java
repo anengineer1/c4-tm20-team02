@@ -35,7 +35,7 @@ public class MainView extends JFrame {
 	private CpuPlayer cpu_player;
 
 	/**
-	 * Create the frame.
+	 * Constructor que crea la ventana principal del juego
 	 */
 	public MainView() {
 		setTitle("TEAM02 - Tick Tack Toe ");
@@ -72,10 +72,18 @@ public class MainView extends JFrame {
 		
 	}
 	
+	/**
+	 * Metodo que devuelve el objeto correspondiente a la parte izquierda de la ventana (las casillas)
+	 * @return objeto BoardTickTackToe
+	 */
 	public BoardTickTackToe getBoard() {
 		return this.left;
 	}
 
+	/**
+	 * Metodo que devuelve el objeto correspondiente a la parte derecha de la ventana (panel de control)
+	 * @return objeto PanelControl
+	 */
 	public PanelControl getPanelControl() {
 		return this.right;
 	}

@@ -16,13 +16,18 @@ public class Jugador {
 	int puntuacion;
 
 	// ------------------- CONSTRUCTORES ---------------------
-	/*-- Constructor por defecto --*/
+	
+	/** Constructor por defecto */
 	public Jugador() {
 		this.numJugadas = 0;
 		this.puntuacion = 0;
 	}
 
-	/*-- Constructor por defecto --*/
+	/**
+	 * Constructor por defecto con nombre y tipo como parámetros
+	 * @param nombre
+	 * @param tipo
+	 */
 	public Jugador(String nombre, String tipo) {
 		this.Nombre = nombre;
 		this.isHumano = true;
@@ -33,21 +38,21 @@ public class Jugador {
 	// ------------------- Getters y Setters ---------------------
 
 	/**
-	 * @return the nombre
+	 * @return Nombre del jugador
 	 */
 	public String getNombre() {
 		return Nombre;
 	}
 
 	/**
-	 * @param nombre the nombre to set
+	 * @param Nombre del jugador
 	 */
 	public void setNombre(String nombre) {
 		Nombre = nombre;
 	}
 
 	/**
-	 * @return the tipo
+	 * @return El tipo
 	 */
 	public Boolean getTipo() {
 		return isHumano;
@@ -61,7 +66,7 @@ public class Jugador {
 	}
 
 	/**
-	 * @return the numJugadas
+	 * @return El número de jugadas
 	 */
 	public int getNumJugadas() {
 		return numJugadas;
@@ -75,7 +80,7 @@ public class Jugador {
 	}
 
 	/**
-	 * @return the puntuacion
+	 * @return La puntuacion
 	 */
 	public int getPuntuacion() {
 		return puntuacion;
@@ -88,6 +93,13 @@ public class Jugador {
 		this.puntuacion = puntuacion;
 	}
 
+	/**
+	 * Método que controla el número de jugadas.
+	 * Si el número de jugada es superior a 3 se da por finalizado el juego,
+	 * en caso contrario sumamos +1
+	 * @param numJugada
+	 * @param puntos
+	 */
 	public void sumaJugada(int numJugada, int puntos) {
 		if (3<numJugada) {
 			System.out.println("FINAL DE JUEGO");
