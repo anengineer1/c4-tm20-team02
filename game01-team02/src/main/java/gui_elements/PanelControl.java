@@ -67,11 +67,11 @@ public class PanelControl extends JPanel{
 		subPanel1.add(lblNewLabel_1_1);
 		
 		JRadioButton boton1Humano = new JRadioButton("Humano");
-		boton1Humano.setBounds(70, 91, 65, 23);
+		boton1Humano.setBounds(70, 91, 76, 23);
 		subPanel1.add(boton1Humano);
 		
 		JRadioButton boton1CPU = new JRadioButton("CPU");
-		boton1CPU.setBounds(153, 91, 45, 23);
+		boton1CPU.setBounds(164, 91, 60, 23);
 		subPanel1.add(boton1CPU);
 		
 		JPanel subPanel2 = new JPanel();
@@ -98,11 +98,11 @@ public class PanelControl extends JPanel{
 		subPanel2.add(lblNewLabel_1_1_1);
 		
 		JRadioButton boton2Humano = new JRadioButton("Humano");
-		boton2Humano.setBounds(70, 86, 65, 23);
+		boton2Humano.setBounds(70, 86, 77, 23);
 		subPanel2.add(boton2Humano);
 		
 		JRadioButton boton2CPU = new JRadioButton("CPU");
-		boton2CPU.setBounds(153, 86, 45, 23);
+		boton2CPU.setBounds(164, 86, 60, 23);
 		subPanel2.add(boton2CPU);
 		
 		JLabel jugadorColocaFicha = new JLabel("Jugador, coloca ficha");
