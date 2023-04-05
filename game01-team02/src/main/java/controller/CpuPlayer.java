@@ -9,7 +9,7 @@ import gui_elements.ToggleButtonWithId;
 
 public class CpuPlayer {
 
-	private BoardController panel_controller;
+	private BoardController board_controller;
 	private ArrayList<ToggleButtonWithId> array_of_available_buttons;
 	private ArrayList<Point> selected_points;
 	private boolean is_cpu_turn;
@@ -17,33 +17,33 @@ public class CpuPlayer {
 	private boolean is_first_player;
 
 	public CpuPlayer(BoardController controller, boolean is_first_player, boolean is_second_player) {
-		this.panel_controller = controller;
+		this.board_controller = controller;
 		this.selected_points = new ArrayList<Point>();
 		// cpu has first turn if it's the first player
 		this.is_cpu_turn = is_first_player;
 		this.is_first_player = is_first_player;
 		this.is_second_player = is_second_player;
 		this.initArrayOfAvailableButtons();
-		this.panel_controller.setCpuPlayer(this);
+		this.board_controller.setCpuPlayer(this);
 		if (is_first_player) {
 			this.doAMove();
 		}
 	}
 
 	private void initArrayOfAvailableButtons() {
-		this.array_of_available_buttons = this.panel_controller.getArrayOfAvailableButtons();
+		this.array_of_available_buttons = this.board_controller.getArrayOfAvailableButtons();
 		Collections.shuffle(this.array_of_available_buttons);
 	}
 
-	private void checkArrayofAvailableButtons() {
-		// Drop the already used elements from a the list
-		for (int i = 0; i < this.array_of_available_buttons.size(); i++) {
-			if (this.array_of_available_buttons.get(i).isSelected()) {
-				System.out.println("Removing " + i);
-				this.array_of_available_buttons.remove(i);
-			}
-		}
-	}
+//	private void checkArrayofAvailableButtons() {
+//		// Drop the already used elements from a the list
+//		for (int i = 0; i < this.array_of_available_buttons.size(); i++) {
+//			if (this.array_of_available_buttons.get(i).isSelected()) {
+//				System.out.println("Removing " + i);
+//				this.array_of_available_buttons.remove(i);
+//			}
+//		}
+//	}
 
 	public boolean checkWin() {
 		// check if there's a victory
@@ -83,15 +83,16 @@ public class CpuPlayer {
 	}
 
 	public void doAMove() {
-		this.checkArrayofAvailableButtons();
+		// this.checkArrayofAvailableButtons();
+		this.initArrayOfAvailableButtons();
 		this.array_of_available_buttons.get(0).setSelected(true);
-		this.array_of_available_buttons.get(0).setUI(new ToggleButtonStyle(this.panel_controller.getX()));
-		this.panel_controller.toggleIsX();
+		this.array_of_available_buttons.get(0).setUI(new ToggleButtonStyle(this.board_controller.getX()));
+		// this.panel_controller.toggleIsX();
 		this.array_of_available_buttons.get(0).setEnabled(false);
 		Point current_point = new Point(this.array_of_available_buttons.get(0).getId_x(),
 				this.array_of_available_buttons.get(0).getId_y());
 		System.out.println(current_point);
 		this.selected_points.add(current_point);
-		// System.out.println(this.checkWin());
+		System.out.println(this.checkWin());
 	}
 }
