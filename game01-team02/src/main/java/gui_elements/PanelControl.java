@@ -7,15 +7,17 @@ package gui_elements;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Enumeration;
 
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-
-import controller.PanelController;
-
 import javax.swing.JTextField;
+import controller.PanelController;
 import javax.swing.JInternalFrame;
 import javax.swing.border.BevelBorder;
 import java.awt.Font;
@@ -25,8 +27,19 @@ import javax.swing.JTextPane;
 public class PanelControl extends JPanel{
 	private JTextField textField;
 	private JTextField textField_1;
-
-	public PanelControl() {
+	private JTextField NombreJugador1;
+	private JTextField NombreJugador2;
+	PanelController pc;
+	private ButtonGroup group1;
+	private ButtonGroup group2;
+	private JRadioButton boton1Humano;
+	private JRadioButton boton2Humano;
+	private JRadioButton boton1CPU;
+	private JRadioButton boton2CPU;
+	private String group1Selected;
+	private String group2Selected;
+	
+	public PanelControl(PanelController pc) {
 		initialize();
 	}
 
@@ -36,13 +49,13 @@ public class PanelControl extends JPanel{
 	private void initialize() {
 		this.setBounds(100, 100, 488, 490);
 		this.setLayout(null);
-		PanelController pc = new PanelController();
-		
+		// PanelController pc = new PanelController();
+
 		// NUEVA PARTIDA
 		JButton btnNewButton = new JButton("Nueva Partida");
 		btnNewButton.setBounds(169, 11, 120, 28);
 		this.add(btnNewButton);
-		
+
 		JPanel subPanel1 = new JPanel();
 		subPanel1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		subPanel1.setBounds(120, 97, 250, 128);
@@ -74,6 +87,13 @@ public class PanelControl extends JPanel{
 		boton1CPU.setBounds(164, 91, 60, 23);
 		subPanel1.add(boton1CPU);
 		
+		
+		// Group the radio buttons.
+		group1 = new ButtonGroup();
+		group1.add(boton1Humano);
+		group1.add(boton1CPU);
+
+		
 		JPanel subPanel2 = new JPanel();
 		subPanel2.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		subPanel2.setBounds(120, 262, 250, 128);
@@ -104,6 +124,12 @@ public class PanelControl extends JPanel{
 		JRadioButton boton2CPU = new JRadioButton("CPU");
 		boton2CPU.setBounds(164, 86, 60, 23);
 		subPanel2.add(boton2CPU);
+		
+		// Group the radio buttons.
+		group2 = new ButtonGroup();
+		group2.add(boton2Humano);
+		group2.add(boton2CPU);
+	
 		
 		JLabel jugadorColocaFicha = new JLabel("Jugador, coloca ficha");
 		jugadorColocaFicha.setHorizontalAlignment(SwingConstants.CENTER);
@@ -138,7 +164,74 @@ public class PanelControl extends JPanel{
 				
 			}
 		});
-		
-	}	
-}
 
+
+		/* -----------------LISTENERS ------------------- */
+
+		// RADIOBUTTONS LISTENERS
+		boton1Humano.addActionListener(send1);
+		boton2Humano.addActionListener(send2);
+		boton1CPU.addActionListener(send1);
+		boton2CPU.addActionListener(send2);
+
+		/*-- Se añade Listener al botón de nueva partida.--*/
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println(NombreJugador1.getText());
+				System.out.println(NombreJugador2.getText());
+				System.out.println(group1Selected);
+				System.out.println(group2Selected);
+				pc.clickPartida(NombreJugador1.getText(), NombreJugador2.getText(), group1Selected, group2Selected);
+			}
+		});
+
+	}
+
+	/*-- Se añade Listeners RADIOBUTTONS.--*/
+	ActionListener send1 = new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			ArrayList<String> selectedBoxes = new ArrayList<String>();
+
+			if (boton1Humano.isSelected()) {
+				selectedBoxes.add(boton1Humano.getText());
+			}
+
+			if (boton1CPU.isSelected()) {
+				selectedBoxes.add(boton1CPU.getText());
+			}
+
+			Enumeration<AbstractButton> allRadioButton = group1.getElements();
+			while (allRadioButton.hasMoreElements()) {
+				JRadioButton temp = (JRadioButton) allRadioButton.nextElement();
+				if (temp.isSelected()) {
+					group1Selected = temp.getText();
+					
+				}
+			}
+		}
+	};
+
+	ActionListener send2 = new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			ArrayList<String> selectedBoxes = new ArrayList<String>();
+
+			if (boton2Humano.isSelected()) {
+				selectedBoxes.add(boton2Humano.getText());
+			}
+
+			if (boton2CPU.isSelected()) {
+				selectedBoxes.add(boton2CPU.getText());
+			}
+
+			Enumeration<AbstractButton> allRadioButton = group2.getElements();
+			while (allRadioButton.hasMoreElements()) {
+				JRadioButton temp = (JRadioButton) allRadioButton.nextElement();
+				if (temp.isSelected()) {
+					group2Selected = temp.getText();
+					
+				}
+			}
+		}
+	};
+}

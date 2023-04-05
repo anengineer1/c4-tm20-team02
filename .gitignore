@@ -1,2 +1,9 @@
 /bin/
 /.settings/
+/target/
+game01-team02/.classpath
+game01-team02/.project
+game01-team02/.settings/org.eclipse.core.resources.prefs
+game01-team02/.settings/org.eclipse.jdt.core.prefs
+game01-team02/.settings/org.eclipse.m2e.core.prefs
+
