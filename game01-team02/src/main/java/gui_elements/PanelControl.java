@@ -16,11 +16,15 @@ import javax.swing.JRadioButton;
 import controller.PanelController;
 
 import javax.swing.JTextField;
+import javax.swing.JInternalFrame;
+import javax.swing.border.BevelBorder;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JTextPane;
 
 public class PanelControl extends JPanel{
-
-	private JTextField NombreJugador1;
-	private JTextField NombreJugador2;
+	private JTextField textField;
+	private JTextField textField_1;
 
 	public PanelControl() {
 		initialize();
@@ -30,7 +34,7 @@ public class PanelControl extends JPanel{
 	 * Initialize the contents of the this.
 	 */
 	private void initialize() {
-		this.setBounds(100, 100, 488, 393);
+		this.setBounds(100, 100, 488, 490);
 		this.setLayout(null);
 		PanelController pc = new PanelController();
 		
@@ -39,78 +43,89 @@ public class PanelControl extends JPanel{
 		btnNewButton.setBounds(169, 11, 120, 28);
 		this.add(btnNewButton);
 		
+		JPanel subPanel1 = new JPanel();
+		subPanel1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		subPanel1.setBounds(120, 97, 250, 128);
+		add(subPanel1);
+		subPanel1.setLayout(null);
 		
-		/* --- JUGADOR 1 --*/ 
-		//LABEL JUGADOR 1
 		JLabel lblNewLabel = new JLabel("Jugador 1");
-		lblNewLabel.setBounds(24, 47, 60, 28);
-		this.add(lblNewLabel);
+		lblNewLabel.setBounds(11, 9, 48, 14);
+		subPanel1.add(lblNewLabel);
 		
-		//LABEL JUGADOR 1 NOMBRE
 		JLabel lblNewLabel_1 = new JLabel("Nombre");
-		lblNewLabel_1.setBounds(24, 86, 60, 22);
-		this.add(lblNewLabel_1);
+		lblNewLabel_1.setBounds(11, 37, 48, 14);
+		subPanel1.add(lblNewLabel_1);
 		
-		//NOMBRE DEL JUGADOR 1
-		NombreJugador1 = new JTextField();
-		NombreJugador1.setBounds(94, 86, 106, 22);
-		this.add(NombreJugador1);
-		NombreJugador1.setColumns(10);
+		textField = new JTextField();
+		textField.setBounds(94, 34, 115, 20);
+		textField.setColumns(10);
+		subPanel1.add(textField);
 		
-		//---- LABEL TIPO JUGADOR 1 ----
 		JLabel lblNewLabel_1_1 = new JLabel("Tipo");
-		lblNewLabel_1_1.setBounds(24, 133, 60, 22);
-		this.add(lblNewLabel_1_1);
+		lblNewLabel_1_1.setBounds(10, 94, 43, 17);
+		subPanel1.add(lblNewLabel_1_1);
 		
-		//TIPO HUMANO
 		JRadioButton boton1Humano = new JRadioButton("Humano");
-		boton1Humano.setBounds(94, 133, 65, 23);
-		this.add(boton1Humano);
+		boton1Humano.setBounds(70, 91, 76, 23);
+		subPanel1.add(boton1Humano);
 		
-		//TIPO CPU
 		JRadioButton boton1CPU = new JRadioButton("CPU");
-		boton1CPU.setBounds(172, 133, 53, 23);
-		this.add(boton1CPU);
+		boton1CPU.setBounds(164, 91, 60, 23);
+		subPanel1.add(boton1CPU);
 		
+		JPanel subPanel2 = new JPanel();
+		subPanel2.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		subPanel2.setBounds(120, 262, 250, 128);
+		add(subPanel2);
+		subPanel2.setLayout(null);
 		
-		/* --- JUGADOR 2 --*/ 
-		//LABEL JUGADOR 2
 		JLabel lblJugador = new JLabel("Jugador 2");
-		lblJugador.setBounds(24, 188, 60, 28);
-		this.add(lblJugador);
+		lblJugador.setBounds(10, 8, 48, 14);
+		subPanel2.add(lblJugador);
 		
-		//LABEL JUGADOR 2 NOMBRE
 		JLabel lblNewLabel_1_2 = new JLabel("Nombre");
-		lblNewLabel_1_2.setBounds(24, 227, 60, 22);
-		this.add(lblNewLabel_1_2);
+		lblNewLabel_1_2.setBounds(10, 36, 48, 14);
+		subPanel2.add(lblNewLabel_1_2);
 		
-		//NOMBRE DEL JUGADOR 2
-		NombreJugador2 = new JTextField();
-		NombreJugador2.setColumns(10);
-		NombreJugador2.setBounds(94, 227, 106, 22);
-		this.add(NombreJugador2);
+		textField_1 = new JTextField();
+		textField_1.setBounds(94, 30, 115, 20);
+		textField_1.setColumns(10);
+		subPanel2.add(textField_1);
 		
-		//---- LABEL TIPO JUGADOR 1 ----
 		JLabel lblNewLabel_1_1_1 = new JLabel("Tipo");
-		lblNewLabel_1_1_1.setBounds(24, 274, 60, 22);
-		this.add(lblNewLabel_1_1_1);
+		lblNewLabel_1_1_1.setBounds(10, 90, 40, 14);
+		subPanel2.add(lblNewLabel_1_1_1);
 		
-		//TIPO HUMANO
 		JRadioButton boton2Humano = new JRadioButton("Humano");
-		boton2Humano.setBounds(94, 274, 65, 23);
-		this.add(boton2Humano);
+		boton2Humano.setBounds(70, 86, 77, 23);
+		subPanel2.add(boton2Humano);
 		
-		//TIPO CPU
 		JRadioButton boton2CPU = new JRadioButton("CPU");
-		boton2CPU.setBounds(172, 274, 53, 23);
-		this.add(boton2CPU);
+		boton2CPU.setBounds(164, 86, 60, 23);
+		subPanel2.add(boton2CPU);
+		
+		JLabel jugadorColocaFicha = new JLabel("Jugador, coloca ficha");
+		jugadorColocaFicha.setHorizontalAlignment(SwingConstants.CENTER);
+		jugadorColocaFicha.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
+		jugadorColocaFicha.setBounds(120, 50, 200, 25);
+		add(jugadorColocaFicha);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setBounds(133, 418, 237, 61);
+		add(textPane);
+		
+		JLabel lblNewLabel_2 = new JLabel("Resultado / mensajes");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setBounds(10, 437, 113, 28);
+		add(lblNewLabel_2);
 		
 		/* -----------------LISTENERS -------------------*/
 		
 		/*-- Se añade Listener al botón de nueva partida.--*/ 
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				pc.clickPartida(NombreJugador1, NombreJugador1);
+//				pc.clickPartida(NombreJugador1, NombreJugador1);
 				
 			}
 		});
@@ -119,10 +134,11 @@ public class PanelControl extends JPanel{
 		/*-- Se añade Listeners al botón de nueva partida.--*/ 
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				pc.clickPartida(NombreJugador1, NombreJugador1);
+//				pc.clickPartida(NombreJugador1, NombreJugador1);
 				
 			}
 		});
 		
-	}}
+	}	
+}
 

@@ -72,6 +72,7 @@ public class BoardController {
 					// Then, the cpu change it again after a move
 					toggleIsX();
 					cpu_player.doAMove();
+					toggleIsX();
 				} else {
 					toggleIsX();
 				}
@@ -100,8 +101,8 @@ public class BoardController {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				System.out.println(((ToggleButtonWithId) e.getSource()).getId_x());
-				System.out.println(((ToggleButtonWithId) e.getSource()).getId_y());
+				// System.out.println(((ToggleButtonWithId) e.getSource()).getId_x());
+				// System.out.println(((ToggleButtonWithId) e.getSource()).getId_y());
 			}
 
 			@Override

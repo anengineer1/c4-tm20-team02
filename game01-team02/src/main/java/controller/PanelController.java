@@ -20,6 +20,12 @@ public class PanelController {
 	 * 
 	 */
 	public PanelController() {
+		/*
+		Jugador j1 =  new Jugador();
+		Jugador j2 =  new Jugador();
+		
+		J1 =  new Jugador(j1.getText(), j2.getText());
+		J2 =  new Jugador(j2.getText(), j2.getText());*/
 	}
 
 	
@@ -34,16 +40,14 @@ public class PanelController {
 		System.out.println(j1.getText());
 		
 		/*-- Creamos los jugadores --*/
-		Jugador J1 =  new Jugador();
-		Jugador J2 =  new Jugador();
+
 		
 		/* TODO: discriminar radiobutton true 
 		* y enviar el tipo radioButtons
 		* al constructor del jugador. */
 		/*--Incluimos los datos de los jugadores --*/
-		J1 =  new Jugador(j1.getText(), j2.getText());
-		J2 =  new Jugador(j2.getText(), j2.getText());
 		
-	}
+		
+	
 	
 }
