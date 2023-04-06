@@ -75,18 +75,4 @@ public class BoardTickTackToe extends JPanel {
 		return this.toggle_buttons[x][y];
 	}
 	
-	/**
-	 * Given the player, returns all the buttons that player pressed
-	 */
-	public ArrayList<ToggleButtonWithId> getPlayerPressedButtons(PlayerSlot player) {
-		ArrayList<ToggleButtonWithId> list_of_buttons = new ArrayList<ToggleButtonWithId>();
-		for (int i = 0; i < toggle_buttons.length; i++) {
-			for (int j = 0; j < toggle_buttons[i].length; j++) {
-				if(this.toggle_buttons[i][j].getPlayer() == player) {
-					list_of_buttons.add(this.toggle_buttons[i][j]);
-				}
-			}
-		}
-		return list_of_buttons;
-	}
 }
