@@ -30,16 +30,12 @@ public class BoardTickTackToe extends JPanel {
 	private void initialize() {
 		// Atributes
 		this.toggle_buttons = new ToggleButtonWithId[BoardTickTackToe.ROWS][BoardTickTackToe.COLS];
-		// this.ui_toggle_button_style = new ToggleButtonStyle[BoardTickTackToe.ROWS][BoardTickTackToe.COLS];
 
 		for (int i = 0; i < toggle_buttons.length; i++) {
 			for (int j = 0; j < toggle_buttons[i].length; j++) {
 				// init togglebuttonsStyles
-				// this.ui_toggle_button_style[i][j] = new ToggleButtonStyle();
 				this.toggle_buttons[i][j] = new ToggleButtonWithId(i,j);
 				this.toggle_buttons[i][j].setContentAreaFilled(false);
-				// this.toggle_buttons[i][j].setOpaque(true);
-				// this.toggle_buttons[i][j].setUI(this.ui_toggle_button_style[i][j]);
 				this.add(this.toggle_buttons[i][j]);
 			}
 		}
@@ -62,10 +58,16 @@ public class BoardTickTackToe extends JPanel {
 		this.toggle_buttons[i][j].setSelected(false);
 	}
 	
+	/**
+	 * Get an array of 3x3 with all the buttons in the board
+	 */
 	public ToggleButtonWithId[][] getArrayOfButtons() {
 		return this.toggle_buttons;
 	}
 	
+	/**
+	 * Given coordinates, it returns and array with all the buttons
+	 */
 	public ToggleButtonWithId getCurrentButton(int x, int y) {
 		return this.toggle_buttons[x][y];
 	}
