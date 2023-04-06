@@ -5,9 +5,12 @@ package gui_elements;
  */
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
+
+import clases.PlayerSlot;
 
 public class BoardTickTackToe extends JPanel {
 	private final static int ROWS = 3;
@@ -66,9 +69,24 @@ public class BoardTickTackToe extends JPanel {
 	}
 	
 	/**
-	 * Given coordinates, it returns and array with all the buttons
+	 * Given coordinates, it returns an array with all the buttons
 	 */
 	public ToggleButtonWithId getCurrentButton(int x, int y) {
 		return this.toggle_buttons[x][y];
+	}
+	
+	/**
+	 * Given the player, returns all the buttons that player pressed
+	 */
+	public ArrayList<ToggleButtonWithId> getPlayerPressedButtons(PlayerSlot player) {
+		ArrayList<ToggleButtonWithId> list_of_buttons = new ArrayList<ToggleButtonWithId>();
+		for (int i = 0; i < toggle_buttons.length; i++) {
+			for (int j = 0; j < toggle_buttons[i].length; j++) {
+				if(this.toggle_buttons[i][j].getPlayer() == player) {
+					list_of_buttons.add(this.toggle_buttons[i][j]);
+				}
+			}
+		}
+		return list_of_buttons;
 	}
 }
