@@ -3,6 +3,7 @@
  */
 package controller;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -213,5 +214,53 @@ public class BoardController {
 			}
 		}
 		return list_of_buttons;
+	}
+
+	public boolean didPlayerWon(PlayerSlot player) {
+
+		/*-- The following lines make checks for every win combination--*/
+		// Check rows
+		for (int i = 0; i < 3; i++) {
+			if (this.ticktacktoe.getCurrentButton(i, 0).getPlayer() == player
+					&& this.ticktacktoe.getCurrentButton(i, 1).getPlayer() == player
+					&& this.ticktacktoe.getCurrentButton(i, 2).getPlayer() == player) {
+				return true;
+			}
+		}
+
+		// Check columns
+		for (int i = 0; i < 3; i++) {
+			if (this.ticktacktoe.getCurrentButton(0, i).getPlayer() == player
+					&& this.ticktacktoe.getCurrentButton(1, i).getPlayer() == player
+					&& this.ticktacktoe.getCurrentButton(2, i).getPlayer() == player) {
+				return true;
+			}
+		}
+
+		// Check diagonals
+		if (this.ticktacktoe.getCurrentButton(0, 0).getPlayer() == player
+				&& this.ticktacktoe.getCurrentButton(1, 1).getPlayer() == player
+				&& this.ticktacktoe.getCurrentButton(2, 2).getPlayer() == player) {
+			return true;
+		}
+		if (this.ticktacktoe.getCurrentButton(0, 2).getPlayer() == player
+				&& this.ticktacktoe.getCurrentButton(1, 1).getPlayer() == player
+				&& this.ticktacktoe.getCurrentButton(2, 0).getPlayer() == player) {
+			return true;
+		}
+
+		// If any of the previous conditions occur, there's no win
+		return false;
+	}
+
+	public PlayerSlot winner() {
+		if (this.didPlayerWon(PlayerSlot.PLAYER_1)) {
+			return PlayerSlot.PLAYER_1;
+		} else if (this.didPlayerWon(PlayerSlot.PLAYER_2)) {
+			return PlayerSlot.PLAYER_2;
+		} else {
+			return PlayerSlot.NON; // No winner
+		}
+		
 	}
 }

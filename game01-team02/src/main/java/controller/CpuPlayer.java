@@ -50,7 +50,7 @@ public class CpuPlayer {
 	/**
 	 * Check if the cpu won, returns "true" if cpu won and "false" Otherwise
 	 */
-	public boolean checkWin() {
+	public boolean checkWin() { // Looking for its deletion
 
 		// Create a 2D boolean array to represent the Tic Tac Toe board
 		boolean[][] board = new boolean[3][3];
