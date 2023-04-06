@@ -34,11 +34,11 @@ public class BoardController {
 	// The board
 	private BoardTickTackToe ticktacktoe;
 
+	/**
+	 * A board is needed for the controller to work
+	 *
+	 */
 	public BoardController(BoardTickTackToe board_tick_tack_toe) {
-		/**
-		 * A board is needed for the controller to work
-		 *
-		 */
 
 		// Initially, we don't have communication with any cpu
 		this.cpu_player = null;
@@ -49,10 +49,11 @@ public class BoardController {
 		this.initToggleButtonsActions();
 	}
 
+	/**
+	 * Initializes every button with the listeners
+	 */
 	private void initToggleButtonsActions() {
-		/**
-		 * Initializes every button with the listeners
-		 */
+
 		for (int i = 0; i < this.ticktacktoe.getArrayOfButtons().length; i++) {
 			for (int j = 0; j < this.ticktacktoe.getArrayOfButtons()[i].length; j++) {
 				this.ticktacktoe.getArrayOfButtons()[i][j].addMouseListener(on_hover_event);
@@ -62,10 +63,11 @@ public class BoardController {
 		}
 	}
 
+	/**
+	 * Initializes the action when an user presses the button on the grid
+	 */
 	private void initTogglePressed() {
-		/**
-		 * Initializes the action when an user presses the button on the grid
-		 */
+
 		this.on_click_toggle = new ActionListener() {
 
 			@Override
@@ -119,10 +121,10 @@ public class BoardController {
 		};
 	}
 
+	/**
+	 * This method is meant to be used when the games needs to be restarted
+	 */
 	public void clearButtons() {
-		/**
-		 * This method is meant to be used when the games needs to be restarted
-		 */
 
 		for (int i = 0; i < this.ticktacktoe.getArrayOfButtons().length; i++) {
 			for (int j = 0; j < this.ticktacktoe.getArrayOfButtons()[i].length; j++) {
@@ -132,10 +134,10 @@ public class BoardController {
 		}
 	}
 
+	/**
+	 * Returns an array of buttons yet to be pushed
+	 */
 	public ArrayList<ToggleButtonWithId> getArrayOfAvailableButtons() {
-		/**
-		 * Returns an array of buttons yet to be pushed
-		 */
 
 		ArrayList<ToggleButtonWithId> array_of_available_buttons = new ArrayList<ToggleButtonWithId>();
 
@@ -150,24 +152,27 @@ public class BoardController {
 		return array_of_available_buttons;
 	}
 
+	/**
+	 * When a cpu player is parsed, it will be able to reply to user input
+	 */
 	public void setCpuPlayer(CpuPlayer mycpuplayer) {
-		/**
-		 * When a cpu player is parsed, it will be able to reply to user input
-		 */
+
 		this.cpu_player = mycpuplayer;
 	}
 
+	/**
+	 * True if the turn corresponds to an 'X'
+	 */
 	public boolean getX() {
-		/**
-		 * True if the turn corresponds to an 'X'
-		 */
+
 		return this.is_x;
 	}
 
+	/**
+	 * Toggle the use of 'X' and 'O'
+	 */
 	public void toggleIsX() {
-		/**
-		 * Toggle the use of 'X' and 'O'
-		 */
+
 		this.is_x = !this.is_x;
 	}
 }

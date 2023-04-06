@@ -14,11 +14,11 @@ public class CpuPlayer {
 	private ArrayList<ToggleButtonWithId> array_of_available_buttons;
 	private ArrayList<Point> selected_points;
 
+	/**
+	 * The contructor must have the boardcontroller so the AI can manipulate the
+	 * board
+	 */
 	public CpuPlayer(BoardController controller, boolean is_first_player, boolean is_second_player) {
-		/**
-		 * The contructor must have the boardcontroller so the AI can manipulate the
-		 * board
-		 */
 
 		this.board_controller = controller;
 		this.selected_points = new ArrayList<Point>();
@@ -32,11 +32,11 @@ public class CpuPlayer {
 		}
 	}
 
+	/**
+	 * Captures a list of the available buttons that ai can press and stores it in
+	 * an internal atribute. Each button also contains its location
+	 */
 	private void initArrayOfAvailableButtons() {
-		/**
-		 * Captures a list of the available buttons that ai can press and stores it in
-		 * an internal atribute. Each button also contains its location
-		 */
 
 		this.array_of_available_buttons = this.board_controller.getArrayOfAvailableButtons();
 
@@ -44,10 +44,10 @@ public class CpuPlayer {
 		Collections.shuffle(this.array_of_available_buttons);
 	}
 
+	/**
+	 * Check if the cpu won, returns "true" if cpu won and "false" Otherwise
+	 */
 	public boolean checkWin() {
-		/**
-		 * Check if the cpu won, returns "true" if cpu won and "false" Otherwise
-		 */
 
 		// Create a 2D boolean array to represent the Tic Tac Toe board
 		boolean[][] board = new boolean[3][3];
@@ -86,10 +86,10 @@ public class CpuPlayer {
 		return false;
 	}
 
+	/**
+	 * Method that makes the cpu do a move
+	 */
 	public void doAMove() {
-		/**
-		 * Method that makes the cpu do a move
-		 */
 
 		// make sure the cpu knows which cells it can press
 		this.initArrayOfAvailableButtons();
