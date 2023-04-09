@@ -83,10 +83,13 @@ public class BoardController {
 					// I have to toggle the symbol for the cpu
 					// Then, the cpu change it again after a move
 					toggleIsX();
+					togglePlayerTurn();
 					cpu_player.doAMove();
 					toggleIsX();
+					togglePlayerTurn();
 				} else {
 					toggleIsX();
+					togglePlayerTurn();
 				}
 
 			}
