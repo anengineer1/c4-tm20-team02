@@ -87,6 +87,8 @@ public class BoardController {
 					cpu_player.doAMove();
 					toggleIsX();
 					togglePlayerTurn();
+				} else if (isGameFinished()) { // This section of the code is not tested
+					System.out.println("Game finished"); // we have to replace this line once the GUI is finished
 				} else {
 					toggleIsX();
 					togglePlayerTurn();
@@ -219,6 +221,9 @@ public class BoardController {
 		return list_of_buttons;
 	}
 
+	/**
+	 * Given the PlayerSlot, it returns of that player won or not
+	 */
 	public boolean didPlayerWon(PlayerSlot player) {
 
 		/*-- The following lines make checks for every win combination--*/
@@ -256,17 +261,33 @@ public class BoardController {
 		return false;
 	}
 
+	/**
+	 * It returns who won the match, it returns NON if there's no winner. Keep in
+	 * mind that it doesn't check if the match ended or not, use in combination with
+	 * isGameFinished()
+	 */
 	public PlayerSlot winner() {
 		if (this.didPlayerWon(PlayerSlot.PLAYER_1)) {
 			return PlayerSlot.PLAYER_1;
 		} else if (this.didPlayerWon(PlayerSlot.PLAYER_2)) {
 			return PlayerSlot.PLAYER_2;
 		} else {
-			return PlayerSlot.NON; // No winner
+			return PlayerSlot.NON; // No winner or game not finished
 		}
-		
+
 	}
-	
+
+	public boolean isGameFinished() {
+		for (int i = 0; i < this.ticktacktoe.getArrayOfButtons().length; i++) {
+			for (int j = 0; j < this.ticktacktoe.getArrayOfButtons()[i].length; j++) {
+				if (this.ticktacktoe.getCurrentButton(i, j).getPlayer() == PlayerSlot.NON) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
 	/**
 	 * Unlocks the Board and restarts the state
 	 */
