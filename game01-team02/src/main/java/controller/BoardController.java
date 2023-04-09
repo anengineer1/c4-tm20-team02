@@ -266,4 +266,17 @@ public class BoardController {
 		}
 		
 	}
+	
+	/**
+	 * Unlocks the Board and restarts the state
+	 */
+	public void restartGame() {
+		for (int i = 0; i < this.ticktacktoe.getArrayOfButtons().length; i++) {
+			for (int j = 0; j < this.ticktacktoe.getArrayOfButtons()[i].length; j++) {
+				this.ticktacktoe.getCurrentButton(i, j).setEnabled(true);
+				this.ticktacktoe.getCurrentButton(i, j).setSelected(false);
+				this.ticktacktoe.getCurrentButton(i, j).setPlayer(PlayerSlot.NON);
+			}
+		}
+	}
 }

@@ -15,6 +15,7 @@ public class ToggleButtonWithId extends JToggleButton {
 	public ToggleButtonWithId(int x, int y) {
 		this.setId_x(x);
 		this.setId_y(y);
+		this.player = PlayerSlot.NON;
 	}
 
 	public ToggleButtonWithId(int x, int y, PlayerSlot player) {
