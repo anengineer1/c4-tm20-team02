@@ -5,11 +5,14 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import clases.PlayerSlot;
 import gui_elements.ToggleButtonStyle;
 import gui_elements.ToggleButtonWithId;
 
 public class CpuPlayer {
 
+	// to know if it's player 1 or 2
+	private PlayerSlot player;
 	private BoardController board_controller;
 	private ArrayList<ToggleButtonWithId> array_of_available_buttons;
 	private ArrayList<Point> selected_points;
@@ -18,7 +21,7 @@ public class CpuPlayer {
 	 * The contructor must have the boardcontroller so the AI can manipulate the
 	 * board
 	 */
-	public CpuPlayer(BoardController controller, boolean is_first_player, boolean is_second_player) {
+	public CpuPlayer(BoardController controller, PlayerSlot slot) {
 
 		this.board_controller = controller;
 		this.selected_points = new ArrayList<Point>();
@@ -27,7 +30,7 @@ public class CpuPlayer {
 
 		this.board_controller.setCpuPlayer(this);
 		// Only move first if its the first player
-		if (is_first_player) {
+		if (slot == PlayerSlot.PLAYER_1) {
 			this.doAMove();
 		}
 	}
@@ -47,7 +50,7 @@ public class CpuPlayer {
 	/**
 	 * Check if the cpu won, returns "true" if cpu won and "false" Otherwise
 	 */
-	public boolean checkWin() {
+	public boolean checkWin() { // Looking for its deletion
 
 		// Create a 2D boolean array to represent the Tic Tac Toe board
 		boolean[][] board = new boolean[3][3];
@@ -96,6 +99,7 @@ public class CpuPlayer {
 
 		// gets the first value of the randomized list
 		this.array_of_available_buttons.get(0).setSelected(true);
+		this.array_of_available_buttons.get(0).setPlayer(this.player);
 		this.array_of_available_buttons.get(0).setUI(new ToggleButtonStyle(this.board_controller.getX()));
 		this.array_of_available_buttons.get(0).setEnabled(false);
 		Point current_point = new Point(this.array_of_available_buttons.get(0).getId_x(),

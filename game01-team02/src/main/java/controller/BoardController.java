@@ -3,12 +3,14 @@
  */
 package controller;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import clases.PlayerSlot;
 import gui_elements.BoardTickTackToe;
 import gui_elements.ToggleButtonStyle;
 import gui_elements.ToggleButtonWithId;
@@ -23,9 +25,8 @@ public class BoardController {
 
 	// X or O?
 	private boolean is_x;
-
-	// Turn from player1
-	private boolean turn_player1;
+	// this defines who's turn is
+	private PlayerSlot turn;
 
 	// actions
 	private MouseListener on_hover_event;
@@ -43,6 +44,7 @@ public class BoardController {
 		// Initially, we don't have communication with any cpu
 		this.cpu_player = null;
 		this.is_x = true;
+		this.turn = PlayerSlot.PLAYER_1;
 		this.ticktacktoe = board_tick_tack_toe;
 		this.initOnHover();
 		this.initTogglePressed();
@@ -73,6 +75,7 @@ public class BoardController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				((ToggleButtonWithId) e.getSource()).setUI(new ToggleButtonStyle(is_x));
+				((ToggleButtonWithId) e.getSource()).setPlayer(turn);
 				((ToggleButtonWithId) e.getSource()).setEnabled(false);
 				// if the cpu is playing we have to let the cpu
 				// know it is its turn
@@ -80,10 +83,13 @@ public class BoardController {
 					// I have to toggle the symbol for the cpu
 					// Then, the cpu change it again after a move
 					toggleIsX();
+					togglePlayerTurn();
 					cpu_player.doAMove();
 					toggleIsX();
+					togglePlayerTurn();
 				} else {
 					toggleIsX();
+					togglePlayerTurn();
 				}
 
 			}
@@ -143,8 +149,8 @@ public class BoardController {
 
 		for (int i = 0; i < this.ticktacktoe.getArrayOfButtons().length; i++) {
 			for (int j = 0; j < this.ticktacktoe.getArrayOfButtons()[i].length; j++) {
-				if (!this.ticktacktoe.getArrayOfButtons()[i][j].isSelected()) {
-					array_of_available_buttons.add(this.ticktacktoe.getArrayOfButtons()[i][j]);
+				if (!this.ticktacktoe.getCurrentButton(i, j).isSelected()) {
+					array_of_available_buttons.add(this.ticktacktoe.getCurrentButton(i, j));
 				}
 			}
 		}
@@ -174,5 +180,90 @@ public class BoardController {
 	public void toggleIsX() {
 
 		this.is_x = !this.is_x;
+		if (is_x) {
+			this.turn = PlayerSlot.PLAYER_1;
+		} else {
+			this.turn = PlayerSlot.PLAYER_2;
+		}
+	}
+
+	public void togglePlayerTurn() {
+
+		switch (this.turn) {
+		case PLAYER_1:
+			this.turn = PlayerSlot.PLAYER_2;
+			break;
+
+		case PLAYER_2:
+			this.turn = PlayerSlot.PLAYER_1;
+			break;
+
+		default:
+			break;
+		}
+
+	}
+
+	/**
+	 * Given the player, returns all the buttons that player pressed
+	 */
+	public ArrayList<ToggleButtonWithId> getPlayerPressedButtons(PlayerSlot player) {
+		ArrayList<ToggleButtonWithId> list_of_buttons = new ArrayList<ToggleButtonWithId>();
+		for (int i = 0; i < this.ticktacktoe.getArrayOfButtons().length; i++) {
+			for (int j = 0; j < this.ticktacktoe.getArrayOfButtons()[i].length; j++) {
+				if (this.ticktacktoe.getCurrentButton(i, j).getPlayer() == player) {
+					list_of_buttons.add(this.ticktacktoe.getCurrentButton(i, j));
+				}
+			}
+		}
+		return list_of_buttons;
+	}
+
+	public boolean didPlayerWon(PlayerSlot player) {
+
+		/*-- The following lines make checks for every win combination--*/
+		// Check rows
+		for (int i = 0; i < 3; i++) {
+			if (this.ticktacktoe.getCurrentButton(i, 0).getPlayer() == player
+					&& this.ticktacktoe.getCurrentButton(i, 1).getPlayer() == player
+					&& this.ticktacktoe.getCurrentButton(i, 2).getPlayer() == player) {
+				return true;
+			}
+		}
+
+		// Check columns
+		for (int i = 0; i < 3; i++) {
+			if (this.ticktacktoe.getCurrentButton(0, i).getPlayer() == player
+					&& this.ticktacktoe.getCurrentButton(1, i).getPlayer() == player
+					&& this.ticktacktoe.getCurrentButton(2, i).getPlayer() == player) {
+				return true;
+			}
+		}
+
+		// Check diagonals
+		if (this.ticktacktoe.getCurrentButton(0, 0).getPlayer() == player
+				&& this.ticktacktoe.getCurrentButton(1, 1).getPlayer() == player
+				&& this.ticktacktoe.getCurrentButton(2, 2).getPlayer() == player) {
+			return true;
+		}
+		if (this.ticktacktoe.getCurrentButton(0, 2).getPlayer() == player
+				&& this.ticktacktoe.getCurrentButton(1, 1).getPlayer() == player
+				&& this.ticktacktoe.getCurrentButton(2, 0).getPlayer() == player) {
+			return true;
+		}
+
+		// If any of the previous conditions occur, there's no win
+		return false;
+	}
+
+	public PlayerSlot winner() {
+		if (this.didPlayerWon(PlayerSlot.PLAYER_1)) {
+			return PlayerSlot.PLAYER_1;
+		} else if (this.didPlayerWon(PlayerSlot.PLAYER_2)) {
+			return PlayerSlot.PLAYER_2;
+		} else {
+			return PlayerSlot.NON; // No winner
+		}
+		
 	}
 }
