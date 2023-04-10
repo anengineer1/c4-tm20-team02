@@ -85,12 +85,21 @@ public class BoardController {
 					toggleIsX();
 					togglePlayerTurn();
 					cpu_player.doAMove();
-					toggleIsX();
-					togglePlayerTurn();
+					((ToggleButtonWithId) e.getSource()).setPlayer(turn);
+					if (isGameFinished()) {
+						System.out.println("Game finished"); // we have to replace this line once the GUI is finished
+					} else {
+						toggleIsX();
+						togglePlayerTurn();
+					}
+				} else if (isGameFinished()) { // This section of the code is not tested
+					System.out.println("Game finished"); // we have to replace this line once the GUI is finished
+					ticktacktoe.blockBoard();
 				} else {
 					toggleIsX();
 					togglePlayerTurn();
 				}
+				System.out.println("Now it's turn: " + turn);
 
 			}
 		};
@@ -116,8 +125,9 @@ public class BoardController {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// System.out.println(((ToggleButtonWithId) e.getSource()).getId_x());
-				// System.out.println(((ToggleButtonWithId) e.getSource()).getId_y());
+//				System.out.println(((ToggleButtonWithId) e.getSource()).getId_x());
+//				System.out.println(((ToggleButtonWithId) e.getSource()).getId_y());
+//				System.out.println(((ToggleButtonWithId) e.getSource()).getPlayer());
 			}
 
 			@Override
@@ -180,11 +190,6 @@ public class BoardController {
 	public void toggleIsX() {
 
 		this.is_x = !this.is_x;
-		if (is_x) {
-			this.turn = PlayerSlot.PLAYER_1;
-		} else {
-			this.turn = PlayerSlot.PLAYER_2;
-		}
 	}
 
 	public void togglePlayerTurn() {
@@ -219,11 +224,18 @@ public class BoardController {
 		return list_of_buttons;
 	}
 
+	/**
+	 * Given the PlayerSlot, it returns of that player won or not
+	 */
 	public boolean didPlayerWon(PlayerSlot player) {
 
 		/*-- The following lines make checks for every win combination--*/
 		// Check rows
 		for (int i = 0; i < 3; i++) {
+//			System.out.println("Getplayer: " + this.ticktacktoe.getCurrentButton(i, 0).getPlayer());
+//			System.out.println("Getplayer: " + this.ticktacktoe.getCurrentButton(i, 1).getPlayer());
+//			System.out.println("Getplayer: " + this.ticktacktoe.getCurrentButton(i, 2).getPlayer());
+//			System.out.println("--------------------------------");
 			if (this.ticktacktoe.getCurrentButton(i, 0).getPlayer() == player
 					&& this.ticktacktoe.getCurrentButton(i, 1).getPlayer() == player
 					&& this.ticktacktoe.getCurrentButton(i, 2).getPlayer() == player) {
@@ -256,14 +268,47 @@ public class BoardController {
 		return false;
 	}
 
+	/**
+	 * It returns who won the match, it returns NON if there's no winner. Keep in
+	 * mind that it doesn't check if the match ended or not, use in combination with
+	 * isGameFinished()
+	 */
 	public PlayerSlot winner() {
 		if (this.didPlayerWon(PlayerSlot.PLAYER_1)) {
 			return PlayerSlot.PLAYER_1;
 		} else if (this.didPlayerWon(PlayerSlot.PLAYER_2)) {
 			return PlayerSlot.PLAYER_2;
 		} else {
-			return PlayerSlot.NON; // No winner
+			return PlayerSlot.NON; // No winner or game not finished
 		}
-		
+
+	}
+
+	public boolean isGameFinished() {
+		System.out.println("Player 1: " + didPlayerWon(PlayerSlot.PLAYER_1));
+		System.out.println("Player 2: " + didPlayerWon(PlayerSlot.PLAYER_2));
+		System.out.println("--------------------------------");
+		for (int i = 0; i < this.ticktacktoe.getArrayOfButtons().length; i++) {
+			for (int j = 0; j < this.ticktacktoe.getArrayOfButtons()[i].length; j++) {
+				if (this.ticktacktoe.getCurrentButton(i, j).getPlayer() == PlayerSlot.NON
+						&& !(didPlayerWon(PlayerSlot.PLAYER_1) || didPlayerWon(PlayerSlot.PLAYER_2))) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Unlocks the Board and restarts the state
+	 */
+	public void restartGame() {
+		for (int i = 0; i < this.ticktacktoe.getArrayOfButtons().length; i++) {
+			for (int j = 0; j < this.ticktacktoe.getArrayOfButtons()[i].length; j++) {
+				this.ticktacktoe.getCurrentButton(i, j).setEnabled(true);
+				this.ticktacktoe.getCurrentButton(i, j).setSelected(false);
+				this.ticktacktoe.getCurrentButton(i, j).setPlayer(PlayerSlot.NON);
+			}
+		}
 	}
 }

@@ -33,6 +33,7 @@ public class CpuPlayer {
 		if (slot == PlayerSlot.PLAYER_1) {
 			this.doAMove();
 		}
+		System.out.println("Cpu is playing");
 	}
 
 	/**
@@ -105,5 +106,6 @@ public class CpuPlayer {
 		Point current_point = new Point(this.array_of_available_buttons.get(0).getId_x(),
 				this.array_of_available_buttons.get(0).getId_y());
 		this.selected_points.add(current_point);
+		System.out.println("moving");
 	}
 }
