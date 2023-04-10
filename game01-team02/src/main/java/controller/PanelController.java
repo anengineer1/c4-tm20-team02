@@ -11,9 +11,7 @@ import java.util.Enumeration;
 import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 
-import controller.CpuPlayer;
 import clases.Player;
 import clases.PlayerSlot;
 import gui_elements.BoardTickTackToe;
@@ -25,10 +23,12 @@ import gui_elements.PanelControl;
  */
 public class PanelController {
 
+	@SuppressWarnings("unused")
 	private BoardTickTackToe leftSideView;
 	private PanelControl rightSideView;
 	private BoardController boardC;
 	// Modelo
+	@SuppressWarnings("unused")
 	private Player playerModel;
 	private CpuPlayer cpuPlayerModel;
 	// Players array

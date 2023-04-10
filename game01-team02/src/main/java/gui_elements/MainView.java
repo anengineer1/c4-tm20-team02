@@ -37,14 +37,14 @@ public class MainView extends JFrame {
 		setTitle("TEAM02 - Tick Tack Toe ");
 		setFont(new Font("Montserrat Medium", Font.PLAIN, 12));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 975, 650);
+		setBounds(100, 100, 1159, 650);
 		
 		//--JPane Principal
 		this.setBackground(new Color(0, 128, 192));
 		//this.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		//-- Creacion de Layout
-		this.setLayout(new GridLayout(1,2));
+		getContentPane().setLayout(new GridLayout(1,2));
 		
 		//Creacion de Paneles 
 		//Panel Izquierda: Tablero
@@ -52,8 +52,8 @@ public class MainView extends JFrame {
 		//Panel Derecha
 		this.right = new PanelControl(panel_controller);	
 		
-		this.add(left);
-		this.add(right);
+		getContentPane().add(left);
+		getContentPane().add(right);
 		this.setVisible(true);
 		
 		
