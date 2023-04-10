@@ -32,8 +32,9 @@ public class CpuPlayer {
 		// Only move first if its the first player
 		if (slot == PlayerSlot.PLAYER_1) {
 			this.doAMove();
+			this.board_controller.toggleIsX();
+			this.board_controller.togglePlayerTurn();
 		}
-		System.out.println("Cpu is playing");
 	}
 
 	/**

@@ -69,6 +69,12 @@ public class PanelController {
 
 		// Reset the board
 		boardC.restartGame();
+		
+		// Si cpu está activa de la partida anterior, borrarla
+		if (cpuPlayerModel != null) {
+			cpuPlayerModel = null;
+			boardC.unSetCpuPlayer();
+		}
 
 		// TODO: Chequear si los 2 players son CPU
 
