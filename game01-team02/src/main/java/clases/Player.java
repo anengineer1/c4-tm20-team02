@@ -79,9 +79,9 @@ public class Player {
 		/*
 		 * Check type player methods and return the type user in string
 		 */
-		if (this.isHuman = true) {
+		if (this.isHuman == true) {
 			typePlayer = "Human";
-		} else if (this.isCpu = true) {
+		} else if (this.isCpu == true) {
 			typePlayer = "CPU";
 		} else {
 			JOptionPane.showMessageDialog(null, "Error getting player type", "Error: End Game",

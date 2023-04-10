@@ -45,6 +45,15 @@ public class BoardTickTackToe extends JPanel {
 		}
 
 	}
+	
+	public void blockBoard() {
+		for (int i = 0; i < toggle_buttons.length; i++) {
+			for (int j = 0; j < toggle_buttons[i].length; j++) {
+				// init togglebuttonsStyles
+				this.toggle_buttons[i][j].setEnabled(false);
+			}
+		}
+	}
 
 	public void setX(int i, int j) {
 		this.ui_toggle_button_style[i][j].setDrawX(true);

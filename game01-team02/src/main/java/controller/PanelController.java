@@ -159,6 +159,7 @@ public class PanelController {
 					JRadioButton temp = (JRadioButton) allRadioButton.nextElement();
 					if (temp.isSelected()) {
 						rightSideView.group2Selected = temp.getText();
+						System.out.println(temp.getText());
 
 					}
 				}

@@ -85,14 +85,21 @@ public class BoardController {
 					toggleIsX();
 					togglePlayerTurn();
 					cpu_player.doAMove();
-					toggleIsX();
-					togglePlayerTurn();
+					((ToggleButtonWithId) e.getSource()).setPlayer(turn);
+					if (isGameFinished()) {
+						System.out.println("Game finished"); // we have to replace this line once the GUI is finished
+					} else {
+						toggleIsX();
+						togglePlayerTurn();
+					}
 				} else if (isGameFinished()) { // This section of the code is not tested
 					System.out.println("Game finished"); // we have to replace this line once the GUI is finished
+					ticktacktoe.blockBoard();
 				} else {
 					toggleIsX();
 					togglePlayerTurn();
 				}
+				System.out.println("Now it's turn: " + turn);
 
 			}
 		};
@@ -118,8 +125,9 @@ public class BoardController {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// System.out.println(((ToggleButtonWithId) e.getSource()).getId_x());
-				// System.out.println(((ToggleButtonWithId) e.getSource()).getId_y());
+//				System.out.println(((ToggleButtonWithId) e.getSource()).getId_x());
+//				System.out.println(((ToggleButtonWithId) e.getSource()).getId_y());
+//				System.out.println(((ToggleButtonWithId) e.getSource()).getPlayer());
 			}
 
 			@Override
@@ -182,11 +190,6 @@ public class BoardController {
 	public void toggleIsX() {
 
 		this.is_x = !this.is_x;
-		if (is_x) {
-			this.turn = PlayerSlot.PLAYER_1;
-		} else {
-			this.turn = PlayerSlot.PLAYER_2;
-		}
 	}
 
 	public void togglePlayerTurn() {
@@ -229,6 +232,10 @@ public class BoardController {
 		/*-- The following lines make checks for every win combination--*/
 		// Check rows
 		for (int i = 0; i < 3; i++) {
+//			System.out.println("Getplayer: " + this.ticktacktoe.getCurrentButton(i, 0).getPlayer());
+//			System.out.println("Getplayer: " + this.ticktacktoe.getCurrentButton(i, 1).getPlayer());
+//			System.out.println("Getplayer: " + this.ticktacktoe.getCurrentButton(i, 2).getPlayer());
+//			System.out.println("--------------------------------");
 			if (this.ticktacktoe.getCurrentButton(i, 0).getPlayer() == player
 					&& this.ticktacktoe.getCurrentButton(i, 1).getPlayer() == player
 					&& this.ticktacktoe.getCurrentButton(i, 2).getPlayer() == player) {
@@ -278,9 +285,13 @@ public class BoardController {
 	}
 
 	public boolean isGameFinished() {
+		System.out.println("Player 1: " + didPlayerWon(PlayerSlot.PLAYER_1));
+		System.out.println("Player 2: " + didPlayerWon(PlayerSlot.PLAYER_2));
+		System.out.println("--------------------------------");
 		for (int i = 0; i < this.ticktacktoe.getArrayOfButtons().length; i++) {
 			for (int j = 0; j < this.ticktacktoe.getArrayOfButtons()[i].length; j++) {
-				if (this.ticktacktoe.getCurrentButton(i, j).getPlayer() == PlayerSlot.NON) {
+				if (this.ticktacktoe.getCurrentButton(i, j).getPlayer() == PlayerSlot.NON
+						&& !(didPlayerWon(PlayerSlot.PLAYER_1) || didPlayerWon(PlayerSlot.PLAYER_2))) {
 					return false;
 				}
 			}
