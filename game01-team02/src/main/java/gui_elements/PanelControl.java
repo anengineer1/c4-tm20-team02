@@ -127,14 +127,14 @@ public class PanelControl extends JPanel {
 		group2.add(boton2CPU);
 
 		//TODO mostrar nombre jugador al que le toca colocar ficha
-		JLabel jugadorColocaFicha = new JLabel("Jugador, coloca ficha");
+		jugadorColocaFicha = new JLabel("Jugador, coloca ficha");
 		jugadorColocaFicha.setHorizontalAlignment(SwingConstants.CENTER);
 		jugadorColocaFicha.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
 		jugadorColocaFicha.setBounds(120, 50, 200, 25);
 		add(jugadorColocaFicha);
 
 		//TODO Este recuadro lo utilizaremos para mostrar mensajes o el resultado de la partida
-		JTextPane textPane = new JTextPane();
+		textPane = new JTextPane();
 		textPane.setBounds(133, 418, 237, 61);
 		add(textPane);
 

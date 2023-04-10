@@ -15,7 +15,6 @@ public class Player {
 	String Name;
 	Boolean isHuman;
 	Boolean isCpu;
-	PlayerSlot playerSlot;
 	int playedTurns;
 	int score;
 

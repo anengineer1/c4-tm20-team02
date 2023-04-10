@@ -3,13 +3,16 @@
  */
 package controller;
 
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
+import javax.swing.JTextPane;
+
+import clases.Player;
 import clases.PlayerSlot;
 import gui_elements.BoardTickTackToe;
 import gui_elements.ToggleButtonStyle;
@@ -34,6 +37,14 @@ public class BoardController {
 
 	// The board
 	private BoardTickTackToe ticktacktoe;
+
+	private Player player_1;
+
+	private Player player_2;
+
+	private JLabel label_whos_turn;
+
+	private JTextPane info_output;
 
 	/**
 	 * A board is needed for the controller to work
@@ -87,6 +98,7 @@ public class BoardController {
 
 					if (isGameFinished()) {
 						System.out.println("Game finished"); // we have to replace this line once the GUI is finished
+						printResults();
 					} else {
 						cpu_player.doAMove();
 						((ToggleButtonWithId) e.getSource()).setPlayer(turn);
@@ -95,12 +107,19 @@ public class BoardController {
 					}
 				} else if (isGameFinished()) { // This section of the code is not tested
 					System.out.println("Game finished"); // we have to replace this line once the GUI is finished
+					printResults();
 					ticktacktoe.blockBoard();
 				} else {
 					toggleIsX();
 					togglePlayerTurn();
 				}
 				System.out.println("Now it's turn: " + turn);
+				if (turn == PlayerSlot.PLAYER_1) {
+					label_whos_turn.setText("Turno de: " + player_1.getName());
+				} else {
+					label_whos_turn.setText("Turno de: " + player_2.getName());
+				}
+				
 
 			}
 		};
@@ -233,10 +252,6 @@ public class BoardController {
 		/*-- The following lines make checks for every win combination--*/
 		// Check rows
 		for (int i = 0; i < 3; i++) {
-//			System.out.println("Getplayer: " + this.ticktacktoe.getCurrentButton(i, 0).getPlayer());
-//			System.out.println("Getplayer: " + this.ticktacktoe.getCurrentButton(i, 1).getPlayer());
-//			System.out.println("Getplayer: " + this.ticktacktoe.getCurrentButton(i, 2).getPlayer());
-//			System.out.println("--------------------------------");
 			if (this.ticktacktoe.getCurrentButton(i, 0).getPlayer() == player
 					&& this.ticktacktoe.getCurrentButton(i, 1).getPlayer() == player
 					&& this.ticktacktoe.getCurrentButton(i, 2).getPlayer() == player) {
@@ -286,9 +301,6 @@ public class BoardController {
 	}
 
 	public boolean isGameFinished() {
-		System.out.println("Player 1: " + didPlayerWon(PlayerSlot.PLAYER_1));
-		System.out.println("Player 2: " + didPlayerWon(PlayerSlot.PLAYER_2));
-		System.out.println("--------------------------------");
 		for (int i = 0; i < this.ticktacktoe.getArrayOfButtons().length; i++) {
 			for (int j = 0; j < this.ticktacktoe.getArrayOfButtons()[i].length; j++) {
 				if (this.ticktacktoe.getCurrentButton(i, j).getPlayer() == PlayerSlot.NON
@@ -315,7 +327,51 @@ public class BoardController {
 		this.turn = PlayerSlot.PLAYER_1;
 	}
 	
+	/**
+	 * Deletes the CPU player, 
+	 */
 	public void unSetCpuPlayer() {
 		this.cpu_player = null;
 	}
+
+	/**
+	 * Set components to interact with 
+	 */
+	public void setPrintResults(JTextPane textPane, JLabel jugadorColocaFicha, Player[] players) {
+		this.player_1 = players[0];
+		this.player_2 = players[1];
+		this.label_whos_turn = jugadorColocaFicha;
+		this.info_output = textPane;
+	}
+	
+	
+	/**
+	 * Print results
+	 */
+	public void printResults() {
+		this.player_1.setPlayedTurns(this.getPlayerPressedButtons(PlayerSlot.PLAYER_1).size());
+		this.player_2.setPlayedTurns(this.getPlayerPressedButtons(PlayerSlot.PLAYER_2).size());
+		if (winner() == PlayerSlot.PLAYER_1) {
+			String winner = "Ganador: " + this.player_1.getName() +"\n";
+			String data_player_1 =this.player_1.toString();
+			String loser = "Gracias por participar: " + this.player_2.getName() + "\n";
+			String data_player_2 = this.player_2.toString();
+			String combination = winner + data_player_1 + loser + data_player_2;			
+			this.info_output.setText(combination);
+		} else if (winner() == PlayerSlot.PLAYER_2) {
+			String winner = "Ganador: " + this.player_2.getName() +"\n";
+			String data_player_2 = this.player_2.toString();
+			String loser = "Gracias por participar: " + this.player_1.getName() + "\n";
+			String data_player_1 =this.player_1.toString();
+			String combination = winner + data_player_2 + loser + data_player_1;		
+			this.info_output.setText(combination);
+		} else {
+			String winner = "No hay ganador";
+			String data_player_1 =this.player_1.toString();
+			String data_player_2 = this.player_2.toString();
+			String combination = winner + data_player_1 + data_player_2;	
+			this.info_output.setText(combination);
+		}
+	}
+	
 }
