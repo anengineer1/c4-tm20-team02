@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 
 import javax.swing.AbstractButton;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
@@ -57,12 +58,6 @@ public class PanelController {
 	// public void clickPartida(String j1, String j2, String tipo1, String tipo2) {
 	public void clickNewGame() {
 
-		/*
-		 * TODO: discriminar radiobutton true y enviar el tipo radioButtons al
-		 * constructor del jugador.
-		 */
-		/*--Incluimos los datos de los jugadores --*/
-
 		/*-- Create the players with introduced values by user in panel control --*/
 		players[0] = new Player(rightSideView.NombreJugador1.getText(), rightSideView.group1Selected);
 		players[1] = new Player(rightSideView.NombreJugador2.getText(), rightSideView.group2Selected);
@@ -70,13 +65,19 @@ public class PanelController {
 		// Reset the board
 		boardC.restartGame();
 		
-		// Si cpu está activa de la partida anterior, borrarla
+		// If cpu is active from last game, delete it
 		if (cpuPlayerModel != null) {
 			cpuPlayerModel = null;
 			boardC.unSetCpuPlayer();
 		}
 
 		// TODO: Chequear si los 2 players son CPU
+		
+		if (players[0].getType() == "CPU" && players[1].getType() == "CPU") {
+			JOptionPane.showMessageDialog(null, "Error getting player type." + "\nOnly can exist one player CPU", "Error: End Game",
+					JOptionPane.ERROR_MESSAGE);
+			System.exit(0);
+		}
 
 		if (players[0].getType() == "CPU") {
 			cpuPlayerModel = new CpuPlayer(boardC, PlayerSlot.PLAYER_1);
