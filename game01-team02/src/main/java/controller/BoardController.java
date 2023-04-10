@@ -98,12 +98,17 @@ public class BoardController {
 
 					if (isGameFinished()) {
 						System.out.println("Game finished"); // we have to replace this line once the GUI is finished
+						ticktacktoe.blockBoard();
 						printResults();
 					} else {
 						cpu_player.doAMove();
-						((ToggleButtonWithId) e.getSource()).setPlayer(turn);
-						toggleIsX();
-						togglePlayerTurn();
+						if (isGameFinished()) {
+							ticktacktoe.blockBoard();
+							printResults();
+						} else {
+							toggleIsX();
+							togglePlayerTurn();
+						}
 					}
 				} else if (isGameFinished()) { // This section of the code is not tested
 					System.out.println("Game finished"); // we have to replace this line once the GUI is finished
@@ -119,7 +124,6 @@ public class BoardController {
 				} else {
 					label_whos_turn.setText("Turno de: " + player_2.getName());
 				}
-				
 
 			}
 		};
@@ -326,16 +330,16 @@ public class BoardController {
 		this.is_x = true;
 		this.turn = PlayerSlot.PLAYER_1;
 	}
-	
+
 	/**
-	 * Deletes the CPU player, 
+	 * Deletes the CPU player,
 	 */
 	public void unSetCpuPlayer() {
 		this.cpu_player = null;
 	}
 
 	/**
-	 * Set components to interact with 
+	 * Set components to interact with
 	 */
 	public void setPrintResults(JTextPane textPane, JLabel jugadorColocaFicha, Player[] players) {
 		this.player_1 = players[0];
@@ -343,8 +347,7 @@ public class BoardController {
 		this.label_whos_turn = jugadorColocaFicha;
 		this.info_output = textPane;
 	}
-	
-	
+
 	/**
 	 * Print results
 	 */
@@ -352,26 +355,26 @@ public class BoardController {
 		this.player_1.setPlayedTurns(this.getPlayerPressedButtons(PlayerSlot.PLAYER_1).size());
 		this.player_2.setPlayedTurns(this.getPlayerPressedButtons(PlayerSlot.PLAYER_2).size());
 		if (winner() == PlayerSlot.PLAYER_1) {
-			String winner = "Ganador: " + this.player_1.getName() +"\n";
-			String data_player_1 =this.player_1.toString();
+			String winner = "Ganador: " + this.player_1.getName() + "\n";
+			String data_player_1 = this.player_1.toString();
 			String loser = "Gracias por participar: " + this.player_2.getName() + "\n";
 			String data_player_2 = this.player_2.toString();
-			String combination = winner + data_player_1 + loser + data_player_2;			
+			String combination = winner + data_player_1 + loser + data_player_2;
 			this.info_output.setText(combination);
 		} else if (winner() == PlayerSlot.PLAYER_2) {
-			String winner = "Ganador: " + this.player_2.getName() +"\n";
+			String winner = "Ganador: " + this.player_2.getName() + "\n";
 			String data_player_2 = this.player_2.toString();
 			String loser = "Gracias por participar: " + this.player_1.getName() + "\n";
-			String data_player_1 =this.player_1.toString();
-			String combination = winner + data_player_2 + loser + data_player_1;		
+			String data_player_1 = this.player_1.toString();
+			String combination = winner + data_player_2 + loser + data_player_1;
 			this.info_output.setText(combination);
 		} else {
 			String winner = "No hay ganador";
-			String data_player_1 =this.player_1.toString();
+			String data_player_1 = this.player_1.toString();
 			String data_player_2 = this.player_2.toString();
-			String combination = winner + data_player_1 + data_player_2;	
+			String combination = winner + data_player_1 + data_player_2;
 			this.info_output.setText(combination);
 		}
 	}
-	
+
 }

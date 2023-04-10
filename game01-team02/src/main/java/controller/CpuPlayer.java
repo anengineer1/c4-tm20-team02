@@ -25,6 +25,7 @@ public class CpuPlayer {
 
 		this.board_controller = controller;
 		this.selected_points = new ArrayList<Point>();
+		this.player = slot;
 
 		this.initArrayOfAvailableButtons();
 
