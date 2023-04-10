@@ -5,24 +5,19 @@
  */
 package gui_elements;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Enumeration;
+import java.awt.Font;
 
-import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import controller.PanelController;
-import javax.swing.JInternalFrame;
-import javax.swing.border.BevelBorder;
-import java.awt.Font;
-import javax.swing.SwingConstants;
 import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
+
+import controller.PanelController;
 
 public class PanelControl extends JPanel {
 	public JButton btnNewButton;
@@ -43,7 +38,6 @@ public class PanelControl extends JPanel {
 	private void initialize() {
 		this.setBounds(100, 100, 488, 490);
 		this.setLayout(null);
-		// PanelController pc = new PanelController();
 
 		// NUEVA PARTIDA
 		btnNewButton = new JButton("Nueva Partida");

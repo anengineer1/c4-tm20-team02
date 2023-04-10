@@ -43,19 +43,15 @@ public class PanelController {
 		this.rightSideView = right;
 		this.boardC = new BoardController(left);
 		this.players = new Player[2];
-		
+
 		initListeners();
 
 	}
 
-	/*-- Boton de Nueva Partida: 
-	 * Comienza la partida con los parametros seleccionados por el usuario
+	/*-- New Game Button: 
+	 * Start the game with params selected for user.
 	 * @params
-	 * --*/
-	/*
-	 * TODO: añadir radiobuttons como parametros, una vez incluidos los listeners.
-	 */
-	// public void clickPartida(String j1, String j2, String tipo1, String tipo2) {
+	 **/
 	public void clickNewGame() {
 
 		/*-- Create the players with introduced values by user in panel control --*/
@@ -64,6 +60,8 @@ public class PanelController {
 
 		// Reset the board
 		boardC.restartGame();
+		//Clean text field results
+		rightSideView.textPane.setText("");
 		
 		// If cpu is active from last game, delete it
 		if (cpuPlayerModel != null) {
@@ -71,42 +69,32 @@ public class PanelController {
 			boardC.unSetCpuPlayer();
 		}
 
-		// TODO: Chequear si los 2 players son CPU
-		
+		// Chequear si los 2 players son CPU
 		if (players[0].getType() == "CPU" && players[1].getType() == "CPU") {
-			JOptionPane.showMessageDialog(null, "Error getting player type." + "\nOnly can exist one player CPU", "Error: End Game",
-					JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error getting player type." + "\nOnly can exist one player CPU",
+					"Error: End Game", JOptionPane.ERROR_MESSAGE);
 			System.exit(0);
 		}
-
+		// Inicialize CPU Player in the case of has been selected
 		if (players[0].getType() == "CPU") {
 			cpuPlayerModel = new CpuPlayer(boardC, PlayerSlot.PLAYER_1);
-		} else {
-//TODO: Error
 		}
+
 		if (players[1].getType() == "CPU") {
 			cpuPlayerModel = new CpuPlayer(boardC, PlayerSlot.PLAYER_2);
-		} else {
-			// TODO: Error
 		}
 
+
+		rightSideView.jugadorColocaFicha.setText("Turno de Jugador 1 " + players[0].getName());
+		
+		// Print results in textfield
 		boardC.setPrintResults(rightSideView.textPane, rightSideView.jugadorColocaFicha, players);
-
-		System.out.println(players[0].getName() + " " + players[0].getType());
-
-	}
-
-	public void initGame() {
-		// Init the board
-
-		// this.cpu_player = new CpuPlayer(this.board_controller, false, true);
 	}
 
 	/*
 	 * Init Listeners of control panel.
 	 */
 	public void initListeners() {
-		
 
 		/*-- Button New Game Listener --*/
 		rightSideView.btnNewButton.addActionListener(new ActionListener() {
@@ -119,11 +107,14 @@ public class PanelController {
 				System.out.println(rightSideView.group2Selected);
 				// clickPartida(rightSideView.NombreJugador1.getText(),
 				// rightSideView.NombreJugador2.getText(),rightSideView.group1Selected,rightSideView.group2Selected);
+
 				clickNewGame();
 			}
 		});
 
-		/*-- Se añade Listeners RADIOBUTTONS.--*/		
+		/* 
+		 * Add Listeners radiobuttons: send1 y send2
+		 */
 		this.send1 = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
