@@ -62,6 +62,8 @@ public class PanelController {
 		boardC.restartGame();
 		//Clean text field results
 		rightSideView.textPane.setText("");
+		//Clean the label of turn
+		rightSideView.jugadorColocaFicha.setText("");
 		
 		// If cpu is active from last game, delete it
 		if (cpuPlayerModel != null) {
@@ -69,7 +71,7 @@ public class PanelController {
 			boardC.unSetCpuPlayer();
 		}
 
-		// Chequear si los 2 players son CPU
+		// Check if 2 players are CPU
 		if (players[0].getType() == "CPU" && players[1].getType() == "CPU") {
 			JOptionPane.showMessageDialog(null, "Error getting player type." + "\nOnly can exist one player CPU",
 					"Error: End Game", JOptionPane.ERROR_MESSAGE);
@@ -84,7 +86,7 @@ public class PanelController {
 			cpuPlayerModel = new CpuPlayer(boardC, PlayerSlot.PLAYER_2);
 		}
 
-
+		//Set the first turn label of PLAYER_1
 		rightSideView.jugadorColocaFicha.setText("Turno de Jugador 1 " + players[0].getName());
 		
 		// Print results in textfield
@@ -166,7 +168,7 @@ public class PanelController {
 
 		/* -----------------LISTENERS ------------------- */
 
-		/* Listeners Radiobuttons */
+		/*Add Listeners Radiobuttons */
 		rightSideView.boton1Humano.addActionListener(send1);
 		rightSideView.boton2Humano.addActionListener(send2);
 		rightSideView.boton1CPU.addActionListener(send1);
