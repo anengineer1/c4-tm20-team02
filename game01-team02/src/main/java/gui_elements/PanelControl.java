@@ -25,11 +25,13 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextPane;
 
 public class PanelControl extends JPanel {
-	private JTextField textField, textField_1, NombreJugador1, NombreJugador2;
-	PanelController pc;
-	private ButtonGroup group1, group2;
-	private JRadioButton boton1Humano, boton2Humano, boton1CPU, boton2CPU;
-	private String group1Selected, group2Selected;
+	public JButton btnNewButton;
+	public JTextField textField, textField_1, NombreJugador1, NombreJugador2;
+	public ButtonGroup group1, group2;
+	public JRadioButton boton1Humano, boton2Humano, boton1CPU, boton2CPU;
+	public String group1Selected, group2Selected;
+	public JTextPane textPane;
+	public JLabel jugadorColocaFicha;
 
 	public PanelControl(PanelController pc) {
 		initialize();
@@ -44,7 +46,7 @@ public class PanelControl extends JPanel {
 		// PanelController pc = new PanelController();
 
 		// NUEVA PARTIDA
-		JButton btnNewButton = new JButton("Nueva Partida");
+		btnNewButton = new JButton("Nueva Partida");
 		btnNewButton.setBounds(169, 11, 120, 28);
 		this.add(btnNewButton);
 
@@ -141,91 +143,38 @@ public class PanelControl extends JPanel {
 		lblNewLabel_2.setBounds(10, 437, 113, 28);
 		add(lblNewLabel_2);
 
-		/* -----------------LISTENERS ------------------- */
-
-		/*-- Se añade Listener al botón de nueva partida.--*/
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-//				pc.clickPartida(NombreJugador1, NombreJugador1);
-
-			}
-		});
-
-		// TODO: Listener a los radioButtons para enviarlos al controller
-		/*-- Se añade Listeners al botón de nueva partida.--*/
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-//				pc.clickPartida(NombreJugador1, NombreJugador1);
-
-			}
-		});
-
-		/* -----------------LISTENERS ------------------- */
-
-		// RADIOBUTTONS LISTENERS
-		boton1Humano.addActionListener(send1);
-		boton2Humano.addActionListener(send2);
-		boton1CPU.addActionListener(send1);
-		boton2CPU.addActionListener(send2);
-
-		/*-- Se añade Listener al botón de nueva partida.--*/
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				System.out.println(NombreJugador1.getText());
-				System.out.println(NombreJugador2.getText());
-				System.out.println(group1Selected);
-				System.out.println(group2Selected);
-				pc.clickPartida(NombreJugador1.getText(), NombreJugador2.getText(), group1Selected, group2Selected);
-			}
-		});
 
 	}
 
-	/*-- Se añade Listeners RADIOBUTTONS.--*/
-	ActionListener send1 = new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			ArrayList<String> selectedBoxes = new ArrayList<String>();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
-			if (boton1Humano.isSelected()) {
-				selectedBoxes.add(boton1Humano.getText());
-			}
-
-			if (boton1CPU.isSelected()) {
-				selectedBoxes.add(boton1CPU.getText());
-			}
-
-			Enumeration<AbstractButton> allRadioButton = group1.getElements();
-			while (allRadioButton.hasMoreElements()) {
-				JRadioButton temp = (JRadioButton) allRadioButton.nextElement();
-				if (temp.isSelected()) {
-					group1Selected = temp.getText();
-
-				}
-			}
-		}
-	};
-
-	ActionListener send2 = new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			ArrayList<String> selectedBoxes = new ArrayList<String>();
-
-			if (boton2Humano.isSelected()) {
-				selectedBoxes.add(boton2Humano.getText());
-			}
-
-			if (boton2CPU.isSelected()) {
-				selectedBoxes.add(boton2CPU.getText());
-			}
-
-			Enumeration<AbstractButton> allRadioButton = group2.getElements();
-			while (allRadioButton.hasMoreElements()) {
-				JRadioButton temp = (JRadioButton) allRadioButton.nextElement();
-				if (temp.isSelected()) {
-					group2Selected = temp.getText();
-
-				}
-			}
-		}
-	};
 }

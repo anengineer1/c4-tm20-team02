@@ -9,8 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import controller.BoardController;
 import controller.CpuPlayer;
+import controller.BoardController;
 import controller.PanelController;
 
 import java.awt.Color;
@@ -24,14 +24,10 @@ import javax.swing.JSplitPane;
 public class MainView extends JFrame {
 
 	private JPanel contentPane;
-
-	private BoardController board_controller;
-	
-	private BoardTickTackToe left;
-	
 	private PanelController panel_controller;
+	//private BoardController board_controller;
+	private BoardTickTackToe left;
 	private PanelControl right;
-	
 	private CpuPlayer cpu_player;
 
 	/**
@@ -63,10 +59,9 @@ public class MainView extends JFrame {
 		
 		//BOARDCONTROLLER
 		// Inicialización de la lógica
-		this.board_controller = new BoardController(left); // controlling ticktacktoe
-		this.cpu_player = new CpuPlayer(this.board_controller, false, true);
-		// Probando cpu
-		
+		//this.board_controller = new BoardController(left); // controlling ticktacktoe
+
+
 		//PANELCONTROLLER
 		this.panel_controller = new PanelController(left, right);
 		
@@ -76,9 +71,9 @@ public class MainView extends JFrame {
 	 * Metodo que devuelve el objeto correspondiente a la parte izquierda de la ventana (las casillas)
 	 * @return objeto BoardTickTackToe
 	 */
-	public BoardTickTackToe getBoard() {
-		return this.left;
-	}
+	/*
+	 * public BoardTickTackToe getBoard() { return this.left; }
+	 */
 
 	/**
 	 * Metodo que devuelve el objeto correspondiente a la parte derecha de la ventana (panel de control)
