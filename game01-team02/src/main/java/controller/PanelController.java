@@ -89,7 +89,7 @@ public class PanelController {
 			// TODO: Error
 		}
 
-		//boardC.setPrintResults(rightSideView.textPane, rightSideView.jugadorColocaFicha, players);
+		boardC.setPrintResults(rightSideView.textPane, rightSideView.jugadorColocaFicha, players);
 
 		System.out.println(players[0].getName() + " " + players[0].getType());
 
