@@ -65,21 +65,21 @@ public class PanelControl extends JPanel {
 		subPanel1.add(lblNewLabel_1);
 
 		// Recuadro de texto para el nombre de jugador 1
-		textField = new JTextField();
-		textField.setBounds(94, 34, 115, 20);
-		textField.setColumns(10);
-		subPanel1.add(textField);
+		NombreJugador1 = new JTextField();
+		NombreJugador1.setBounds(94, 34, 115, 20);
+		NombreJugador1.setColumns(10);
+		subPanel1.add(NombreJugador1);
 
 		JLabel lblNewLabel_1_1 = new JLabel("Tipo");
 		lblNewLabel_1_1.setBounds(10, 94, 43, 17);
 		subPanel1.add(lblNewLabel_1_1);
 
 		// Botones tipo radio correspondientes a jugador 1
-		JRadioButton boton1Humano = new JRadioButton("Humano");
+		boton1Humano = new JRadioButton("Humano");
 		boton1Humano.setBounds(70, 91, 76, 23);
 		subPanel1.add(boton1Humano);
 
-		JRadioButton boton1CPU = new JRadioButton("CPU");
+		boton1CPU = new JRadioButton("CPU");
 		boton1CPU.setBounds(164, 91, 60, 23);
 		subPanel1.add(boton1CPU);
 
@@ -103,21 +103,21 @@ public class PanelControl extends JPanel {
 		subPanel2.add(lblNewLabel_1_2);
 
 		// Recuadro de texto para el nombre de jugador 2
-		textField_1 = new JTextField();
-		textField_1.setBounds(94, 30, 115, 20);
-		textField_1.setColumns(10);
-		subPanel2.add(textField_1);
+		NombreJugador2 = new JTextField();
+		NombreJugador2.setBounds(94, 30, 115, 20);
+		NombreJugador2.setColumns(10);
+		subPanel2.add(NombreJugador2);
 
 		JLabel lblNewLabel_1_1_1 = new JLabel("Tipo");
 		lblNewLabel_1_1_1.setBounds(10, 90, 40, 14);
 		subPanel2.add(lblNewLabel_1_1_1);
 
 		// Botones tipo radio correspondientes a jugador 2
-		JRadioButton boton2Humano = new JRadioButton("Humano");
+		boton2Humano = new JRadioButton("Humano");
 		boton2Humano.setBounds(70, 86, 77, 23);
 		subPanel2.add(boton2Humano);
 
-		JRadioButton boton2CPU = new JRadioButton("CPU");
+		boton2CPU = new JRadioButton("CPU");
 		boton2CPU.setBounds(164, 86, 60, 23);
 		subPanel2.add(boton2CPU);
 

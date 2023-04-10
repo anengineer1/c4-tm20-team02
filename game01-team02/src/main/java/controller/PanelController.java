@@ -32,7 +32,7 @@ public class PanelController {
 	private CpuPlayer cpuPlayerModel;
 	// Players array
 	// Save the 2 players of game
-	private Player players[] = new Player[2];
+	private Player[] players;
 	private ActionListener send1, send2;
 
 	// public PanelController(BoardTickTackToe left, PanelControl right, Player
@@ -41,6 +41,8 @@ public class PanelController {
 		this.leftSideView = left;
 		this.rightSideView = right;
 		this.boardC = new BoardController(left);
+		this.players = new Player[2];
+		
 		initListeners();
 
 	}
@@ -104,8 +106,8 @@ public class PanelController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				System.out.println(rightSideView.NombreJugador1.getText());
-				System.out.println(rightSideView.NombreJugador2.getText());
+				// System.out.println(rightSideView.NombreJugador1.getText());
+				// System.out.println(rightSideView.NombreJugador2.getText());
 				System.out.println(rightSideView.group1Selected);
 				System.out.println(rightSideView.group2Selected);
 				// clickPartida(rightSideView.NombreJugador1.getText(),
@@ -114,9 +116,8 @@ public class PanelController {
 			}
 		});
 
-		/*-- Se añade Listeners RADIOBUTTONS.--*/
-		
-		send1 = new ActionListener() {
+		/*-- Se añade Listeners RADIOBUTTONS.--*/		
+		this.send1 = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<String> selectedBoxes = new ArrayList<String>();
@@ -140,7 +141,7 @@ public class PanelController {
 			}
 		};
 
-		send2 = new ActionListener() {
+		this.send2 = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<String> selectedBoxes = new ArrayList<String>();
