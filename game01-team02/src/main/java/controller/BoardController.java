@@ -84,11 +84,12 @@ public class BoardController {
 					// Then, the cpu change it again after a move
 					toggleIsX();
 					togglePlayerTurn();
-					cpu_player.doAMove();
-					((ToggleButtonWithId) e.getSource()).setPlayer(turn);
+
 					if (isGameFinished()) {
 						System.out.println("Game finished"); // we have to replace this line once the GUI is finished
 					} else {
+						cpu_player.doAMove();
+						((ToggleButtonWithId) e.getSource()).setPlayer(turn);
 						toggleIsX();
 						togglePlayerTurn();
 					}
@@ -310,5 +311,11 @@ public class BoardController {
 				this.ticktacktoe.getCurrentButton(i, j).setPlayer(PlayerSlot.NON);
 			}
 		}
+		this.is_x = true;
+		this.turn = PlayerSlot.PLAYER_1;
+	}
+	
+	public void unSetCpuPlayer() {
+		this.cpu_player = null;
 	}
 }
