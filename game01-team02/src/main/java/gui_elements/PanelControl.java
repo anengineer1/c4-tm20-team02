@@ -57,7 +57,7 @@ public class PanelControl extends JPanel {
 		subPanel1.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Jugador 1");
-		lblNewLabel.setBounds(11, 9, 48, 14);
+		lblNewLabel.setBounds(11, 9, 76, 14);
 		subPanel1.add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("Nombre");
@@ -95,7 +95,7 @@ public class PanelControl extends JPanel {
 		subPanel2.setLayout(null);
 
 		JLabel lblJugador = new JLabel("Jugador 2");
-		lblJugador.setBounds(10, 8, 48, 14);
+		lblJugador.setBounds(10, 8, 76, 14);
 		subPanel2.add(lblJugador);
 
 		JLabel lblNewLabel_1_2 = new JLabel("Nombre");
