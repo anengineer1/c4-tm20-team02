@@ -16,16 +16,13 @@ public class Player {
 	Boolean isHuman;
 	Boolean isCpu;
 	int playedTurns;
-	int score;
 
 	// ------------------- CONSTRUCTORES ---------------------
 
 	/** Constructor por defecto */
 	public Player() {
 		this.playedTurns = 0;
-		this.score = 0;
 	}
-
 	/**
 	 * Constructor por defecto con nombre y tipo como parámetros
 	 * 
@@ -51,7 +48,6 @@ public class Player {
 		}
 
 		this.playedTurns = 0;
-		this.score = 0;
 	}
 
 	// ------------------- Getters y Setters ---------------------
@@ -125,35 +121,14 @@ public class Player {
 		this.playedTurns = playedTurns;
 	}
 
-	/**
-	 * @return La puntuacion
-	 */
-	public int getScore() {
-		return score;
+
+	@Override
+	public String toString() {
+		
+		return "\nPlayer:  " + Name + " -  es CPU: " + isCpu + " -  Turnos Jugados: " + playedTurns
+				+ "\n";
 	}
 
-	/**
-	 * @param score the puntuacion to set
-	 */
-	public void setScore(int score) {
-		this.score = score;
-	}
 
-	/*	*//**
-			 * Método que controla el número de jugadas. Si el número de jugada es superior
-			 * a 3 se da por finalizado el juego, en caso contrario sumamos +1
-			 * 
-			 * @param numJugada
-			 * @param puntos
-			 *//*
-				 * public void sumaJugada(int numJugada, int puntos) { if (3 < numJugada) {
-				 * System.out.println("FINAL DE JUEGO"); } else { numJugada = numJugada + 1; }
-				 * 
-				 * }
-				 * 
-				 * public void checkIfFinal() {
-				 * 
-				 * }
-				 */
 
 }

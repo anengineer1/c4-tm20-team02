@@ -6,8 +6,11 @@ package gui_elements;
 import javax.swing.plaf.basic.BasicButtonUI;
 import javax.swing.AbstractButton;
 import javax.swing.JComponent;
+import javax.swing.border.BevelBorder;
 
 import java.awt.Graphics2D;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 
@@ -35,7 +38,7 @@ public class ToggleButtonStyle extends BasicButtonUI {
 				Graphics2D g2 = (Graphics2D) g.create();
 				g2.setColor(button.getForeground());
 				FontMetrics fm = g2.getFontMetrics();
-
+				
 				String letter = drawX ? "X" : "O";
 
 				int x = (c.getWidth() - fm.stringWidth(letter)) / 2;

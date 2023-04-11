@@ -38,7 +38,7 @@ public class BoardTickTackToe extends JPanel {
 			for (int j = 0; j < toggle_buttons[i].length; j++) {
 				// init togglebuttonsStyles
 				this.toggle_buttons[i][j] = new ToggleButtonWithId(i,j);
-				this.toggle_buttons[i][j].setContentAreaFilled(false);
+				//this.toggle_buttons[i][j].setContentAreaFilled(false);
 				this.toggle_buttons[i][j].setEnabled(false);
 				this.add(this.toggle_buttons[i][j]);
 			}
