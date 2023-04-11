@@ -10,6 +10,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
 import gui_elements.BoardTickTackToe;
@@ -46,6 +47,10 @@ public class BoardController {
 	private JLabel label_whos_turn;
 
 	private JTextPane info_output;
+
+	private JTextField namePlayer1;
+
+	private JTextField namePlayer2;
 
 	/**
 	 * A board is needed for the controller to work
@@ -121,9 +126,9 @@ public class BoardController {
 				}
 				System.out.println("Now it's turn: " + turn);
 				if (turn == PlayerSlot.PLAYER_1) {
-					label_whos_turn.setText("Turno de: " + player_1.getName());
+					label_whos_turn.setText("Turno de Jugador 1: " + player_1.getName());
 				} else {
-					label_whos_turn.setText("Turno de: " + player_2.getName());
+					label_whos_turn.setText("Turno de Jugador 2: " + player_2.getName());
 				}
 
 			}
@@ -342,11 +347,13 @@ public class BoardController {
 	/**
 	 * Set components to interact with
 	 */
-	public void setPrintResults(JTextPane textPane, JLabel jugadorColocaFicha, Player[] players) {
+	public void setPrintResults(JTextPane textPane, JLabel jugadorColocaFicha, Player[] players, JTextField namePlayer1, JTextField namePlayer2) {
 		this.player_1 = players[0];
 		this.player_2 = players[1];
 		this.label_whos_turn = jugadorColocaFicha;
 		this.info_output = textPane;
+		this.namePlayer1=namePlayer1;
+		this.namePlayer2=namePlayer2;
 	}
 
 	/**
@@ -376,6 +383,9 @@ public class BoardController {
 			String combination = winner + data_player_1 + data_player_2;
 			this.info_output.setText(combination);
 		}
+		//Clean labels players
+		namePlayer1.setText("");
+		namePlayer2.setText("");
 	}
 
 }

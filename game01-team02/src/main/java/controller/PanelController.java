@@ -65,6 +65,7 @@ public class PanelController {
 		rightSideView.textPane.setText("");
 		//Clean the label of turn
 		rightSideView.jugadorColocaFicha.setText("");
+
 		
 		// If cpu is active from last game, delete it
 		if (cpuPlayerModel != null) {
@@ -81,17 +82,20 @@ public class PanelController {
 		// Inicialize CPU Player in the case of has been selected
 		if (players[0].getType() == "CPU") {
 			cpuPlayerModel = new CpuPlayer(boardC, PlayerSlot.PLAYER_1);
+			rightSideView.jugadorColocaFicha.setText("Turno de Jugador 2 " + players[1].getName());
 		}
 
 		if (players[1].getType() == "CPU") {
 			cpuPlayerModel = new CpuPlayer(boardC, PlayerSlot.PLAYER_2);
+			rightSideView.jugadorColocaFicha.setText("Turno de Jugador 1 " + players[0].getName());
 		}
-
-		//Set the first turn label of PLAYER_1
-		rightSideView.jugadorColocaFicha.setText("Turno de Jugador 1 " + players[0].getName());
+		if (players[0].getType() != "CPU") {
+			rightSideView.jugadorColocaFicha.setText("Turno de Jugador 1 " + players[0].getName());
+		}
 		
 		// Print results in textfield
-		boardC.setPrintResults(rightSideView.textPane, rightSideView.jugadorColocaFicha, players);
+		boardC.setPrintResults(rightSideView.textPane, rightSideView.jugadorColocaFicha, players, rightSideView.NombreJugador1, rightSideView.NombreJugador2);
+
 	}
 
 	/*
