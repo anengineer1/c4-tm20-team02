@@ -22,4 +22,5 @@ El programa se estructura en 3 directorios principales:
  
 ## Capturas
 
-/Añadir capturas/
+![2023-04-11 09_56_58-TEAM02 - Tick Tack Toe](https://user-images.githubusercontent.com/57563030/231097795-be7317cc-9b97-4a84-87c7-734326833305.png)
+![2023-04-11 10_09_13-TEAM02 - Tick Tack Toe](https://user-images.githubusercontent.com/57563030/231097802-ba5c04c8-2007-4c1c-8644-38c1fd8a8b4d.png)
