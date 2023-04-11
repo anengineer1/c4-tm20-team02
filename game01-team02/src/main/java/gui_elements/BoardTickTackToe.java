@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
-import clases.PlayerSlot;
+import models.PlayerSlot;
 
 public class BoardTickTackToe extends JPanel {
 	private final static int ROWS = 3;

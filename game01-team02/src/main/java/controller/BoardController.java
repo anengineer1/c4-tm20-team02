@@ -12,11 +12,12 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
 
-import clases.Player;
-import clases.PlayerSlot;
 import gui_elements.BoardTickTackToe;
 import gui_elements.ToggleButtonStyle;
 import gui_elements.ToggleButtonWithId;
+import models.CpuPlayer;
+import models.Player;
+import models.PlayerSlot;
 
 /**
  * GAME01-TEAM02( Marc Rojo, Francisco, Elena)

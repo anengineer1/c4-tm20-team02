@@ -1,7 +1,7 @@
 /**
  * 
  */
-package clases;
+package models;
 
 import javax.swing.JOptionPane;
 

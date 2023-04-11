@@ -1,4 +1,4 @@
-package clases;
+package models;
 
 public enum PlayerSlot {
 	PLAYER_1,

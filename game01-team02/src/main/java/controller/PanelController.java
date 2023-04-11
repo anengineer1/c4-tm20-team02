@@ -12,10 +12,11 @@ import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
-import clases.Player;
-import clases.PlayerSlot;
 import gui_elements.BoardTickTackToe;
 import gui_elements.PanelControl;
+import models.CpuPlayer;
+import models.Player;
+import models.PlayerSlot;
 
 /**
  * GAME01-TEAM02( Marc Rojo, Francisco, Elena)

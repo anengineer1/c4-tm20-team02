@@ -1,11 +1,11 @@
-package controller;
+package models;
 
 import java.awt.Point;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-import clases.PlayerSlot;
+import controller.BoardController;
 import gui_elements.ToggleButtonStyle;
 import gui_elements.ToggleButtonWithId;
 
