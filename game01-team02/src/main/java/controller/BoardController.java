@@ -5,8 +5,6 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
@@ -30,6 +28,7 @@ public class BoardController {
 
 	// X or O?
 	private boolean is_x;
+	
 	// this defines who's turn is
 	private PlayerSlot turn;
 
@@ -100,7 +99,6 @@ public class BoardController {
 					togglePlayerTurn();
 
 					if (isGameFinished()) {
-						System.out.println("Game finished"); // we have to replace this line once the GUI is finished
 						ticktacktoe.blockBoard();
 						printResults();
 					} else {
@@ -113,8 +111,7 @@ public class BoardController {
 							togglePlayerTurn();
 						}
 					}
-				} else if (isGameFinished()) { // This section of the code is not tested
-					System.out.println("Game finished"); // we have to replace this line once the GUI is finished
+				} else if (isGameFinished()) {
 					printResults();
 					ticktacktoe.blockBoard();
 				} else {
@@ -275,6 +272,10 @@ public class BoardController {
 
 	}
 
+	
+	/**
+	 * It returns true if the game is finished
+	 */
 	public boolean isGameFinished() {
 		for (int i = 0; i < this.ticktacktoe.getArrayOfButtons().length; i++) {
 			for (int j = 0; j < this.ticktacktoe.getArrayOfButtons()[i].length; j++) {
@@ -348,7 +349,7 @@ public class BoardController {
 			String combination = winner + data_player_1 + data_player_2;
 			this.info_output.setText(combination);
 		}
-		//Clean labels players
+		// Clean labels players
 		namePlayer1.setText("");
 		namePlayer2.setText("");
 	}

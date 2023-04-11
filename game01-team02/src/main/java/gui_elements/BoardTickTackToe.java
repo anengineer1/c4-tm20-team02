@@ -5,14 +5,11 @@ package gui_elements;
  */
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
-import java.util.ArrayList;
 
 import javax.swing.JPanel;
-import javax.swing.JToggleButton;
-
-import models.PlayerSlot;
 
 public class BoardTickTackToe extends JPanel {
+	private static final long serialVersionUID = 1L;
 	private final static int ROWS = 3;
 	private final static int COLS = 3;
 

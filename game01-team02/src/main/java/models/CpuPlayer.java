@@ -51,48 +51,6 @@ public class CpuPlayer {
 	}
 
 	/**
-	 * Check if the cpu won, returns "true" if cpu won and "false" Otherwise
-	 */
-	public boolean checkWin() { // Looking for its deletion
-
-		// Create a 2D boolean array to represent the Tic Tac Toe board
-		boolean[][] board = new boolean[3][3];
-
-		// Update the board with the moves of each player
-		// selected points are the cells chose by the
-		// computer
-		for (Point move : this.selected_points) {
-			board[move.x][move.y] = true;
-		}
-
-		/*-- The following lines make checks for every win combination--*/
-		// Check rows
-		for (int i = 0; i < 3; i++) {
-			if (board[i][0] && board[i][1] && board[i][2]) {
-				return true;
-			}
-		}
-
-		// Check columns
-		for (int i = 0; i < 3; i++) {
-			if (board[0][i] && board[1][i] && board[2][i]) {
-				return true;
-			}
-		}
-
-		// Check diagonals
-		if (board[0][0] && board[1][1] && board[2][2]) {
-			return true;
-		}
-		if (board[0][2] && board[1][1] && board[2][0]) {
-			return true;
-		}
-
-		// If any of the previous conditions occur, there's no win
-		return false;
-	}
-
-	/**
 	 * Method that makes the cpu do a move
 	 */
 	public void doAMove() {
