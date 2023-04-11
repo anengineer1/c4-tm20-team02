@@ -165,7 +165,7 @@ public class PanelControl extends JPanel {
 		//TODO Este recuadro lo utilizaremos para mostrar mensajes o el resultado de la partida
 		textPane = new JTextPane();
 		textPane.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 204, 102), null, null, null));
-		textPane.setBounds(140, 434, 287, 84);
+		textPane.setBounds(43, 408, 477, 110);
 		add(textPane);
 
 		JLabel lblNewLabel_2 = new JLabel("Resultado / mensajes");
@@ -174,7 +174,7 @@ public class PanelControl extends JPanel {
 		lblNewLabel_2.setFont(new Font("Liberation Mono", Font.BOLD, 14));
 		lblNewLabel_2.setBackground(new Color(255, 255, 255));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_2.setBounds(111, 378, 287, 61);
+		lblNewLabel_2.setBounds(111, 365, 287, 61);
 		add(lblNewLabel_2);
 
 
