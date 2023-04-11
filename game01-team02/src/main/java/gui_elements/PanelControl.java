@@ -10,6 +10,9 @@ import java.awt.Font;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import java.awt.Font;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -55,6 +58,7 @@ public class PanelControl extends JPanel {
 		btnNewButton.setBorder(new SoftBevelBorder(BevelBorder.RAISED, new Color(255, 204, 0), null, null, null));
 		btnNewButton.setBounds(207, 11, 158, 44);
 		this.add(btnNewButton);
+
 
 		//Agrupamos los elementos de Jugador 1 y 2 (Nombre, selector de Humano/CPU, etc) en 2 JPanel "hijos" (subpanel)
 		JPanel subPanel1 = new JPanel();
@@ -150,11 +154,10 @@ public class PanelControl extends JPanel {
 		group2 = new ButtonGroup();
 		group2.add(boton2Humano);
 		group2.add(boton2CPU);
-
+    
 		// Mostrar nombre jugador al que le toca colocar ficha
 		jugadorColocaFicha = new JLabel("Jugador :  coloca ficha");
-		jugadorColocaFicha.setIcon(new ImageIcon(
-				PanelControl.class.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-more-details.png")));
+		jugadorColocaFicha.setIcon(new ImageIcon(PanelControl.class.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-more-details.png")));
 		jugadorColocaFicha.setBackground(Color.ORANGE);
 		jugadorColocaFicha.setForeground(new Color(255, 204, 102));
 		jugadorColocaFicha.setHorizontalAlignment(SwingConstants.LEFT);
@@ -162,22 +165,19 @@ public class PanelControl extends JPanel {
 		jugadorColocaFicha.setBounds(111, 82, 287, 25);
 		add(jugadorColocaFicha);
 
-		// Este recuadro lo utilizaremos para mostrar mensajes o el resultado de la
-		// partida
+		// Este recuadro lo utilizaremos para mostrar mensajes o el resultado de la partida
 		textPane = new JTextPane();
 		textPane.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 204, 102), null, null, null));
 		textPane.setBounds(43, 408, 477, 110);
 		add(textPane);
 
 		JLabel lblNewLabel_2 = new JLabel("Resultado / mensajes");
-		lblNewLabel_2
-				.setIcon(new ImageIcon(PanelControl.class.getResource("/javax/swing/plaf/metal/icons/ocean/info.png")));
+		lblNewLabel_2.setIcon(new ImageIcon(PanelControl.class.getResource("/javax/swing/plaf/metal/icons/ocean/info.png")));
 		lblNewLabel_2.setForeground(new Color(255, 204, 102));
 		lblNewLabel_2.setFont(new Font("Liberation Mono", Font.BOLD, 14));
 		lblNewLabel_2.setBackground(new Color(255, 255, 255));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_2.setBounds(111, 365, 287, 61);
 		add(lblNewLabel_2);
-
 	}
 }
