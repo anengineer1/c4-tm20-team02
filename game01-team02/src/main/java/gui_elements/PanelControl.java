@@ -5,6 +5,11 @@
  */
 package gui_elements;
 
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import java.awt.Font;
 
 import javax.swing.ButtonGroup;
@@ -16,14 +21,10 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.border.SoftBevelBorder;
 
 import controller.PanelController;
-import java.awt.Color;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.LineBorder;
-import java.awt.SystemColor;
-import javax.swing.ImageIcon;
-import javax.swing.border.SoftBevelBorder;
 
 public class PanelControl extends JPanel {
 	public JButton btnNewButton;
@@ -40,7 +41,7 @@ public class PanelControl extends JPanel {
 	}
 
 	/**
-	 * Initialize the contents of the this.
+	 * Inicializa el panel de control, situado en el lado derecho
 	 */
 	private void initialize() {
 		this.setBounds(100, 100, 587, 529);
@@ -58,6 +59,8 @@ public class PanelControl extends JPanel {
 		btnNewButton.setBounds(207, 11, 158, 44);
 		this.add(btnNewButton);
 
+
+		//Agrupamos los elementos de Jugador 1 y 2 (Nombre, selector de Humano/CPU, etc) en 2 JPanel "hijos" (subpanel)
 		JPanel subPanel1 = new JPanel();
 		subPanel1.setBackground(Color.LIGHT_GRAY);
 		subPanel1.setBorder(new LineBorder(new Color(255, 255, 255), 7, true));
@@ -151,8 +154,8 @@ public class PanelControl extends JPanel {
 		group2 = new ButtonGroup();
 		group2.add(boton2Humano);
 		group2.add(boton2CPU);
-
-		//TODO mostrar nombre jugador al que le toca colocar ficha
+    
+		// Mostrar nombre jugador al que le toca colocar ficha
 		jugadorColocaFicha = new JLabel("Jugador :  coloca ficha");
 		jugadorColocaFicha.setIcon(new ImageIcon(PanelControl.class.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-more-details.png")));
 		jugadorColocaFicha.setBackground(Color.ORANGE);
@@ -162,7 +165,7 @@ public class PanelControl extends JPanel {
 		jugadorColocaFicha.setBounds(111, 82, 287, 25);
 		add(jugadorColocaFicha);
 
-		//TODO Este recuadro lo utilizaremos para mostrar mensajes o el resultado de la partida
+		// Este recuadro lo utilizaremos para mostrar mensajes o el resultado de la partida
 		textPane = new JTextPane();
 		textPane.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 204, 102), null, null, null));
 		textPane.setBounds(43, 408, 477, 110);
@@ -176,39 +179,5 @@ public class PanelControl extends JPanel {
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_2.setBounds(111, 365, 287, 61);
 		add(lblNewLabel_2);
-
-
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
